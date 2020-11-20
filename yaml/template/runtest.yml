@@ -4,41 +4,13 @@ parameters:
   jobDisplayName: 'Run test'
 
 jobs:
-  - job: '${{ parameters.jobName }}_net461'
-    pool:
-      vmImage: ${{ parameters.vmImageName }}
-    displayName: ${{ parameters.jobDisplayName }} - net461
-    condition: startsWith('${{ parameters.vmImageName }}', 'win')
-    steps:
-    - download: current
-    - task: DotNetCoreCLI@2
-      displayName: Tests on Windows - net461
-      inputs:
-        command: test
-        projects: test/test.csproj
-        nobuild: true
-        arguments: --runtime net461 --collect:"XPlat Code Coverage"
-        testRunTitle: Tests on Windows - net461
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: cobertura
-        summaryFileLocation: $(Agent.TempDirectory)/**/coverage.cobertura.xml
-
-  - job: '${{ parameters.jobName }}_netcoreapp31'
+  - job: '${{ parameters.jobName }}_netstandard20'
     pool:
         vmImage: ${{ parameters.vmImageName }}
-    displayName: ${{ parameters.jobDisplayName }} - netcoreapp3.1
+    displayName: ${{ parameters.jobDisplayName }} - netstandard2.0
     steps:
-    - download: current
-    - task: DotNetCoreCLI@2
-      displayName: Tests on ${{parameters.vmImageName}} - netcoreapp3.1
-      inputs:
-        command: test
-        projects: test/test.csproj
-        nobuild: true
-        arguments: --runtime netcoreapp3.1 --collect:"XPlat Code Coverage"
-        testRunTitle: Tests on ${{parameters.vmImageName}}
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: cobertura
-        summaryFileLocation: $(Agent.TempDirectory)/**/coverage.cobertura.xml
+    - pwsh: |
+      Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
+      Invoke-Pester -Path ./test
+    displayName: Test
+    condition: succeeded()
