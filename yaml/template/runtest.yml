@@ -7,10 +7,9 @@ jobs:
   - job: '${{ parameters.jobName }}_netstandard20'
     pool:
         vmImage: ${{ parameters.vmImageName }}
-    displayName: ${{ parameters.jobDisplayName }} - netstandard2.0
+    displayName: ${{ parameters.jobDisplayName }} - Test
     steps:
     - pwsh: |
         Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
         Invoke-Pester -Path ./test
-    displayName: Test
     condition: succeeded()
