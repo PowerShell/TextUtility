@@ -9,6 +9,10 @@ jobs:
         vmImage: ${{ parameters.vmImageName }}
     displayName: ${{ parameters.jobDisplayName }} - Test
     steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifactName: out
+        targetPath: '$(Build.SourcesDirectory)/out'
     - pwsh: |
         Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
         Invoke-Pester -Path ./test
