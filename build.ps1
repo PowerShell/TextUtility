@@ -1,16 +1,34 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
+
+## Copyright (c) Microsoft Corporation.
+## Licensed under the MIT License.
 
 [CmdletBinding()]
-param(
-    [switch] $Clean = $false
+param (
+    [Parameter()]
+    [string]
+    $Configuration = "Debug",
+
+    [Parameter()]
+    [switch]
+    $Clean
 )
 
-Push-Location $PSScriptRoot/src/code
-if ($Clean) {
-    Remove-Item -Recurse -Path ./bin -Force -ErrorAction SilentlyContinue
-    Remove-Item -Recurse -Path ./obj -Force -ErrorAction SilentlyContinue
-}
+try {
+    Push-Location "$PSScriptRoot/src/code"
 
-dotnet build
-Pop-Location
+    $outPath = "$PSScriptRoot/out"
+
+    if ($Clean) {
+        if (Test-Path $outPath) {
+            Write-Verbose "Deleting $outPath"
+            Remove-Item -recurse -force -path $outPath
+        }
+
+        dotnet clean
+    }
+
+    dotnet publish --output "$PSScriptRoot/out" --configuration $Configuration
+}
+finally {
+    Pop-Location
+}
