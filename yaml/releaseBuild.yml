@@ -1,0 +1,236 @@
+name: TextUtility-Release-$(Build.BuildId)
+trigger: none
+
+pr:
+  branches:
+    include:
+    - master
+    - release*
+
+variables:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  POWERSHELL_TELEMETRY_OPTOUT: 1
+
+resources:
+  repositories:
+  - repository: ComplianceRepo
+    type: github
+    endpoint: ComplianceGHRepo
+    name: PowerShell/compliance
+
+stages:
+- stage: Build
+  displayName: Build
+  pool:
+    name: Package ES CodeHub Lab E
+  jobs:
+  - job: Build_Job
+    displayName: Build Microsoft.PowerShell.TextUtility
+    variables:
+    - group: ESRP
+    steps:
+    - checkout: self
+
+    - pwsh: |
+        $versionString = if ($env:RELEASE_VERSION -eq 'fromBranch') {
+          $branch = $env:BUILD_SOURCEBRANCH
+          $branchOnly = $branch -replace '^refs/heads/'
+          $branchOnly -replace '^.*(release[-/])'
+        }
+        else {
+            $env:RELEASE_VERSION
+        }
+
+        $nugetVersion = if ($versionString.StartsWith('v')) {
+            $versionString.Substring(1)
+        }
+        else {
+            $versionString
+        }
+
+        $vstsCommandString = "vso[task.setvariable variable=Version]$nugetVersion"
+        Write-Verbose -Message "setting Version to $nugetVersion" -Verbose
+        Write-Host -Object "##$vstsCommandString"
+      displayName: Set NuGet package version variable
+
+    - pwsh: |
+        $signSrcPath = "$(Build.SourcesDirectory)\TextUtility\tosign"
+        $null = New-Item -ItemType Directory -Path $signSrcPath
+        # Set signing src path variable
+        $vstsCommandString = "vso[task.setvariable variable=signSrcPath]${signSrcPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+
+        $signOutPath = "$(Build.SourcesDirectory)\TextUtility\signed"
+        $null = New-Item -ItemType Directory -Path $signOutPath
+        # Set signing out path variable
+        $vstsCommandString = "vso[task.setvariable variable=signOutPath]${signOutPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+
+        # Set path variable for guardian codesign validation
+        $vstsCommandString = "vso[task.setvariable variable=GDN_CODESIGN_TARGETDIRECTORY]${signOutPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+
+        $nugetSrcPath = "$(System.ArtifactsDirectory)/nuget"
+        $null = New-Item -ItemType Directory -Path $nugetSrcPath
+        # Set signing src path variable
+        $vstsCommandString = "vso[task.setvariable variable=nugetSrcPath]${nugetSrcPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+
+        $nugetOutPath = "$(System.ArtifactsDirectory)\nuget-signed"
+        $null = New-Item -ItemType Directory -Path $nugetOutPath
+        # Set signing out path variable
+        $vstsCommandString = "vso[task.setvariable variable=nugetOutPath]${nugetOutPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+      displayName: Setup variables for signing
+
+    - pwsh: |
+        ./TextUtility/build.ps1 -Clean -Configuration 'Release'
+      displayName: Execute build
+
+    - publish: "$(Build.SourcesDirectory)\\TextUtility\\src\\obj\\project.assets.json"
+      artifact: AssetsJson
+      displayName: Publish project.assets.json
+
+    - publish: "$(Build.SourcesDirectory)\\TextUtility\\out"
+      artifact: build
+      displayName: Publish build
+
+    - pwsh: |
+        Copy-Item -Path "$(Build.SourcesDirectory)\TextUtility\out\Microsoft.PowerShell.TextUtility.dll" -Destination '$(signSrcPath)\' -Verbose -Force
+      displayName: Copy files to sign
+
+    - pwsh: |
+        $excludeList = @('Microsoft.PowerShell.TextUtility.dll')
+        Copy-Item -Path "$(Build.SourcesDirectory)\TextUtility\out\*.dll" -Destination '$(signOutPath)' -Verbose -Exclude 'Microsoft.PowerShell.TextUtility.dll'
+      displayName: Copy pre-signed dependent assemblies
+
+    - checkout: ComplianceRepo
+
+    - template: EsrpSign.yml@ComplianceRepo
+      parameters:
+        # the folder which contains the binaries to sign
+        buildOutputPath: $(signSrcPath)
+        # the location to put the signed output
+        signOutputPath: $(signOutPath)
+        # the certificate ID to use
+        certificateId: "CP-230012"
+        # the file pattern to use, comma separated
+        pattern: '*.dll'
+
+    - pwsh: |
+        Copy-Item -Path "$env:SIGNSRCPATH\*.dll" -Destination "$env:SIGNOUTPATH\" -recurse -verbose
+      displayName: Dummy copy to signed
+      condition: eq(variables['SkipSigning'], 'True')
+
+    - publish: "$(SIGNOUTPATH)"
+      artifact: signed
+      displayName: Publish signed assembly
+
+    - task: NuGetToolInstaller@1
+      displayName: 'Install NuGet.exe'
+
+    - pwsh: |
+        $packageRootPath = '$(System.ArtifactsDirectory)/Microsoft.PowerShell.TextUtility'
+        $libPath = "$packageRootPath/lib/netstandard2.0"
+        $null = New-Item -ItemType Directory -Path $libPath -Force
+        Copy-Item -Path "$env:signOutPath\*.dll" -Destination $libPath -Verbose
+        Copy-Item -Path '$(Build.SourcesDirectory)/TextUtility/src/packaging/microsoft.powershell.TextUtility.nuspec' -Destination $packageRootPath -Verbose
+        Push-Location $packageRootPath
+        $version = "$env:VERSION"
+        Write-Verbose -Verbose "Creating NuGet package with version $version"
+        nuget.exe pack . -Version $version
+
+        if (-not (Test-Path "./Microsoft.PowerShell.TextUtility.$version.nupkg")) {
+            throw 'NuGet package not created.'
+        }
+        else {
+            Copy-Item "./Microsoft.PowerShell.TextUtility.$version.nupkg" -Destination '$(nugetSrcPath)' -Verbose -Force
+        }
+      displayName: Create NuGet Package
+
+    - publish: '$(nugetSrcPath)/Microsoft.PowerShell.TextUtility.$(VERSION).nupkg'
+      artifact: unsigned-nuget
+      displayName: Publish nuget package
+
+    - template: EsrpSign.yml@ComplianceRepo
+      parameters:
+        # the folder which contains the binaries to sign
+        buildOutputPath: $(nugetSrcPath)
+        # the location to put the signed output
+        signOutputPath: $(nugetOutPath)
+        # the certificate ID to use
+        certificateId: "CP-401405"
+        # the file pattern to use, comma separated
+        pattern: '*.nupkg'
+
+    - pwsh: |
+        Copy-Item -Path "$env:NUGETSRCPATH\*.nupkg" -Destination "$env:NUGETOUTPATH\" -recurse -verbose
+      displayName: Dummy nuget copy to signed
+      condition: and(succeeded(),eq(variables['SkipSigning'], 'True'))
+
+    - pwsh: |
+        $version = "$env:VERSION"
+        $nugetPkgPath = Get-Item -Path "$env:NUGETOUTPATH/Microsoft.PowerShell.TextUtility.$version.nupkg"
+        $vstsCommandString = "vso[task.setvariable variable=nugetPkgPath]${nugetPkgPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+      displayName: Set nuget package path
+
+    - publish: '$(NUGETPKGPATH)'
+      artifact: nuget
+      displayName: Publish nuget package
+
+- stage: compliance
+  displayName: Compliance
+  dependsOn: Build
+  jobs:
+  - job: Compliance_Job
+    pool:
+      name: Package ES CodeHub Lab E
+    steps:
+    - checkout: self
+    - checkout: ComplianceRepo
+    - download: current
+      artifact: build
+    - download: current
+      artifact: AssetsJson
+
+    - pwsh: |
+        Get-ChildItem -Path "$(Pipeline.Workspace)\build" -Recurse
+
+        Get-ChildItem -Path "$(Pipeline.Workspace)\AssetsJson" -Recurse
+      displayName: Capture downloaded artifacts
+
+    - template: assembly-module-compliance.yml@ComplianceRepo
+      parameters:
+        # binskim
+        AnalyzeTarget: '$(Pipeline.Workspace)\*.dll'
+        AnalyzeSymPath: 'SRV*'
+        # component-governance
+        sourceScanPath: '$(Pipeline.Workspace)\AssetsJson'
+        # credscan
+        suppressionsFile: ''
+        # TermCheck
+        optionsRulesDBPath: ''
+        optionsFTPath: ''
+        # tsa-upload
+        codeBaseName: 'TextUtility_20201023'
+        # selections
+        APIScan: false # set to false when not using Windows APIs.
+
+- template: template/publish.yml
+  parameters:
+    stageName: AzArtifactsFeed
+    environmentName: AzArtFeedApproval
+    feedUrl: 'https://pkgs.dev.azure.com/mscodehub/_packaging/pscore-release/nuget/v3/index.json'
+
+- template: template/publish.yml
+  parameters:
+    stageName: NuGet
+    environmentName: NugetFeedApproval
+    feedCredential: NugetOrgPush
