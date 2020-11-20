@@ -75,7 +75,9 @@
 
                                     $consoleWidth = 120
                                     try {
-                                        $consoleWidth = [Console]::WindowWidth
+                                        if ([Console]::WindowWidth -ne 0) {
+                                            $consoleWidth = [Console]::WindowWidth
+                                        }
                                     }
                                     catch {
                                         # just use default if this fails because there isn't a real console

@@ -48,7 +48,6 @@ example text[1;9;31m.[0m[0;1;32m used![0m
 
     It 'Compare with sideybyside works' {
         $out = Compare-Text $leftText $rightText -View SideBySide | Out-String
-        write-verbose -verbose "Width: $([Console]::WindowWidth)"
         $out | Should -BeExactly $expectedSideBySide
     }
 }
