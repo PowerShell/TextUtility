@@ -15,5 +15,5 @@ jobs:
         targetPath: '$(Build.SourcesDirectory)/out'
     - pwsh: |
         Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
-        Invoke-Pester -Path ./test
+        Invoke-Pester -Path ./test -OutputFormat NUnitXml -EnableExit
     condition: succeeded()
