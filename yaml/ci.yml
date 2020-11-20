@@ -23,7 +23,7 @@ stages:
 - stage: Build
   pool:
     vmImage: windows-latest
-  displayName: Build Microsoft.PowerShell.MarkdownRender
+  displayName: Build Microsoft.PowerShell.TextUtility
   jobs:
   - job: Build
     displayName: Build
