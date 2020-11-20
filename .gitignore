@@ -3,6 +3,7 @@ bin/
 obj/
 out/
 project.lock.json
+.DS_Store
 
 # VSCode directories that are not at the repository root
 /**/.vscode/
