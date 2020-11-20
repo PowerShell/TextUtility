@@ -10,7 +10,7 @@ jobs:
     displayName: ${{ parameters.jobDisplayName }} - netstandard2.0
     steps:
     - pwsh: |
-      Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
-      Invoke-Pester -Path ./test
+        Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
+        Invoke-Pester -Path ./test
     displayName: Test
     condition: succeeded()
