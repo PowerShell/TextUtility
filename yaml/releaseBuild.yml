@@ -94,8 +94,8 @@ stages:
         useMinimatch: false
   
     - pwsh: |
-        New-Item -Path $(Build.SourcesDirectory)/SignedZip -ItemType Directory
-        Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip
+        New-Item -Path $(Build.SourcesDirectory)/SignedZip -ItemType Directory -ErrorAction Ignore
+        Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
       displayName: 'Compress archive'
       condition: succeededOrFailed()
 
