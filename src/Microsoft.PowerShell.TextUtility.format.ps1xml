@@ -13,9 +13,9 @@
                                 <ScriptBlock>
                                     Set-StrictMode -Off
 
-                                    $deleteColor = "`e[1;9;31m"
-                                    $insertColor = "`e[0;1;32m"
-                                    $resetColor = "`e[0m"
+                                    $deleteColor = "$([char]0x1b)[1;9;31m"
+                                    $insertColor = "$([char]0x1b)[0;1;32m"
+                                    $resetColor = "$([char]0x1b)[0m"
                                     $textBuilder = [System.Text.StringBuilder]::new()
                                     $newline = [System.Environment]::NewLine
 
@@ -85,10 +85,10 @@
 
                                     $deleteText = [System.Text.StringBuilder]::new()
                                     $insertText = [System.Text.StringBuilder]::new()
-                                    $deleteColor = "`e[1;9;31m"
-                                    $insertColor = "`e[0;1;32m"
-                                    $resetColor = "`e[0m"
-                                    $ellipsis = "`u{2026}"
+                                    $deleteColor = "$([char]0x1b)[1;9;31m"
+                                    $insertColor = "$([char]0x1b)[0;1;32m"
+                                    $resetColor = "$([char]0x1b)[0m"
+                                    $ellipsis = [char]0x2026
                                     $newline = [System.Environment]::NewLine
 
                                     foreach ($diff in $_.Diff) {
