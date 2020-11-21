@@ -49,8 +49,8 @@ stages:
     steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
-        Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force
-        Remove-Item -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -Recurse -Force
+        Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force -ErrorAction Ignore
+        Remove-Item -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -Recurse -Force -ErrorAction Ignore
         .\build.ps1 -Clean
         Remove-Item .\out\*.pdb
       displayName: Build
