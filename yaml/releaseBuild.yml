@@ -48,6 +48,9 @@ stages:
       vmImage: 'vs2017-win2016'
     steps:
     - pwsh: |
+        # build agents get reused so we make sure to remove the old archive
+        Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force
+        Remove-Item -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -Recurse -Force
         .\build.ps1 -Clean
         Remove-Item .\out\*.pdb
       displayName: Build
