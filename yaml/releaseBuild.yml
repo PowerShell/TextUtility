@@ -1,4 +1,4 @@
-name: PR-$(System.PullRequest.PullRequestNumber)-$(Date:yyyyMMdd)$(Rev:.rr)
+name: $(Date:yyyyMMdd)$(Rev:.rr)
 
 variables:
   # Don't download unneeded packages
