@@ -17,6 +17,7 @@
         <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-*">
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
