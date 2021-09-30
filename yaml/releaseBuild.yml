@@ -45,7 +45,7 @@ stages:
   - job: 'ReleaseBuild'
     displayName: Release Build
     pool:
-      vmImage: 'vs2017-win2016'
+      name: PowerShell1ES
     steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
@@ -62,8 +62,7 @@ stages:
     displayName: Signing Build
     dependsOn: 'ReleaseBuild'
     pool:
-      name: 'Package ES CodeHub Lab E'
-      demands: DotNetFramework
+      name: PowerShell1ES
     steps:
     - powershell: |
         Get-ChildItem -Path env:
@@ -115,7 +114,7 @@ stages:
   jobs:
   - job: Compliance_Job
     pool:
-      name: Package ES CodeHub Lab E
+      name: PowerShell1ES
     steps:
     - checkout: self
     - checkout: ComplianceRepo
