@@ -95,7 +95,7 @@ stages:
     - ${{ if ne(variables.SkipSigning, 'True') }}:
       - template: Sbom.yml@ComplianceRepo
         parameters:
-          BuildDropPath: $(signOutputPath)
+          BuildDropPath: $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility
           Build_Repository_Uri: 'https://github.com/powershell/textutility'
   
     - pwsh: |
