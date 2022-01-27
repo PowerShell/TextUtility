@@ -4,12 +4,12 @@ trigger:
   batch: true
   branches:
     include:
-    - master
+    - main
     - release*
 pr:
   branches:
     include:
-    - master
+    - main
     - release*
 
 resources:
