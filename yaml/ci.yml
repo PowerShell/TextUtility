@@ -22,11 +22,11 @@ resources:
 stages:
 - stage: Build
   displayName: Build Microsoft.PowerShell.TextUtility
-  pool:
-    vmImage: windows-latest
   jobs:
   - job: Build
     displayName: Build
+    pool:
+      vmImage: windows-latest
     steps:
     - pwsh: |
         ./build.ps1 -Clean
