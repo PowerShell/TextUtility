@@ -4,12 +4,12 @@ trigger:
   batch: true
   branches:
     include:
-    - master
+    - main
     - release*
 pr:
   branches:
     include:
-    - master
+    - main
     - release*
 
 resources:
@@ -21,12 +21,12 @@ resources:
 
 stages:
 - stage: Build
-  pool:
-    vmImage: windows-latest
   displayName: Build Microsoft.PowerShell.TextUtility
   jobs:
   - job: Build
     displayName: Build
+    pool:
+      vmImage: windows-latest
     steps:
     - pwsh: |
         ./build.ps1 -Clean
@@ -60,8 +60,8 @@ stages:
   dependsOn: Build
   jobs:
   - job: Compliance_Job
-    pool:
-      vmImage: windows-latest
+  pool:
+    vmImage: windows-latest
     steps:
     - checkout: self
     - checkout: ComplianceRepo

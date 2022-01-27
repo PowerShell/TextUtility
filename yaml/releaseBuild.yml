@@ -12,7 +12,7 @@ trigger:
   batch: true
   branches:
     include:
-      - master
+      - main
   paths:
     exclude:
       - /.dependabot/*
@@ -46,6 +46,8 @@ stages:
     displayName: Release Build
     pool:
       name: PowerShell1ES
+      demands:
+      - ImageOverride -equals PSMMS2019-Secure
     steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
@@ -61,8 +63,9 @@ stages:
     - group: ESRP
     displayName: Signing Build
     dependsOn: 'ReleaseBuild'
-    pool:
-      name: PowerShell1ES
+    pool: PowerShell1ES
+      demands:
+      - ImageOverride -equals PSMMS2019-Secure
     steps:
     - powershell: |
         Get-ChildItem -Path env:
@@ -92,6 +95,12 @@ stages:
         # https://github.com/isaacs/minimatch#features
         useMinimatch: false
   
+    - ${{ if ne(variables.SkipSigning, 'True') }}:
+      - template: Sbom.yml@ComplianceRepo
+        parameters:
+          BuildDropPath: $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility
+          Build_Repository_Uri: 'https://github.com/powershell/textutility'
+  
     - pwsh: |
         New-Item -Path $(Build.SourcesDirectory)/SignedZip -ItemType Directory -ErrorAction Ignore
         Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
@@ -115,6 +124,8 @@ stages:
   - job: Compliance_Job
     pool:
       name: PowerShell1ES
+      demands:
+      - ImageOverride -equals PSMMS2019-Secure
     steps:
     - checkout: self
     - checkout: ComplianceRepo
