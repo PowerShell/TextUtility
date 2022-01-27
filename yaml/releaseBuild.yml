@@ -44,7 +44,8 @@ stages:
   jobs:
   - job: 'ReleaseBuild'
     displayName: Release Build
-    pool: PowerShell1ES
+    pool:
+      name: PowerShell1ES
       demands:
       - ImageOverride -equals PSMMS2019-Secure
     steps:
@@ -123,6 +124,8 @@ stages:
   - job: Compliance_Job
     pool:
       name: PowerShell1ES
+      demands:
+      - ImageOverride -equals PSMMS2019-Secure
     steps:
     - checkout: self
     - checkout: ComplianceRepo
