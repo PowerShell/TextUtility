@@ -44,8 +44,9 @@ stages:
   jobs:
   - job: 'ReleaseBuild'
     displayName: Release Build
-    pool:
-      name: PowerShell1ES
+    pool: PowerShell1ES
+      demands:
+      - ImageOverride -equals PSMMS2019-Secure
     steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
@@ -61,8 +62,9 @@ stages:
     - group: ESRP
     displayName: Signing Build
     dependsOn: 'ReleaseBuild'
-    pool:
-      name: PowerShell1ES
+    pool: PowerShell1ES
+      demands:
+      - ImageOverride -equals PSMMS2019-Secure
     steps:
     - powershell: |
         Get-ChildItem -Path env:

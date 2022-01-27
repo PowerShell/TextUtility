@@ -21,9 +21,10 @@ resources:
 
 stages:
 - stage: Build
-  pool:
-    vmImage: windows-latest
   displayName: Build Microsoft.PowerShell.TextUtility
+  pool: PowerShell1ES
+    demands:
+    - ImageOverride -equals PSMMS2019-Secure
   jobs:
   - job: Build
     displayName: Build
