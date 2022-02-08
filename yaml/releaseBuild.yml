@@ -55,6 +55,10 @@ stages:
         Remove-Item -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -Recurse -Force -ErrorAction Ignore
         .\build.ps1 -Clean
         Remove-Item .\out\*.pdb
+        $packageVersion = (Import-PowerShellDataFile $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility/Microsoft.PowerShell.TextUtility.psd1).ModuleVersion
+        $vstsCommandString = "vso[task.setvariable variable=PackageVersion]$packageVersion"
+        Write-Host ("sending " + $vstsCommandString)
+        Write-Host "##$vstsCommandString"
       displayName: Build
     - publish: "out/"
       artifact: out
@@ -94,27 +98,28 @@ stages:
         # decides if the task should use minimatch for the pattern matching.
         # https://github.com/isaacs/minimatch#features
         useMinimatch: false
-  
-    - ${{ if ne(variables.SkipSigning, 'True') }}:
-      - template: Sbom.yml@ComplianceRepo
-        parameters:
-          BuildDropPath: $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility
-          Build_Repository_Uri: 'https://github.com/powershell/textutility'
-  
+
+    - template: Sbom.yml@ComplianceRepo
+      parameters:
+        BuildDropPath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
+        Build_Repository_Uri: 'https://github.com/powershell/textutility'
+        PackageName: 'Microsoft.PowerShell.TextUtility'
+        PackageVersion: $(PackageVersion)
+
     - pwsh: |
-        New-Item -Path $(Build.SourcesDirectory)/SignedZip -ItemType Directory -ErrorAction Ignore
-        Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
+        New-Item -Path $(Build.SourcesDirectory)/out/SignedZip -ItemType Directory -ErrorAction Ignore
+        Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/out/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
       displayName: 'Compress archive'
       condition: succeededOrFailed()
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility
+        targetpath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
         artifactName: Signed
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/SignedZip
+        targetpath: $(Build.SourcesDirectory)/out/SignedZip
         artifactName: SignedZip
 
 - stage: compliance
