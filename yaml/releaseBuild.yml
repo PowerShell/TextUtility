@@ -39,15 +39,22 @@ resources:
     name: PowerShell/compliance
 
 stages:
-- stage: Build
-  displayName: Build
+- stage: Build and Sign
+  displayName: Build and Sign
   jobs:
-  - job: 'ReleaseBuild'
-    displayName: Release Build
+  - job: 'BuildAndSign'
+    variables:
+    - group: ESRP
+    displayName: Build and Sign
     pool:
       name: PowerShell1ES
       demands:
       - ImageOverride -equals PSMMS2019-Secure
+    steps:
+    - powershell: |
+        Get-ChildItem -Path env:
+      displayName: Capture environment
+      condition: succeededOrFailed()
     steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
@@ -62,26 +69,6 @@ stages:
       displayName: Build
     - publish: "out/"
       artifact: out
-  - job: 'SignBuild'
-    variables:
-    - group: ESRP
-    displayName: Signing Build
-    dependsOn: 'ReleaseBuild'
-    pool:
-      name: PowerShell1ES
-      demands:
-      - ImageOverride -equals PSMMS2019-Secure
-    steps:
-    - powershell: |
-        Get-ChildItem -Path env:
-      displayName: Capture environment
-      condition: succeededOrFailed()
-
-    - task: DownloadPipelineArtifact@2
-      displayName: 'Download Pipeline Artifacts'
-      inputs:
-        artifact: 'out'
-        path: $(Build.SourcesDirectory)/out
 
     - template: EsrpSign.yml@ComplianceRepo
       parameters:
