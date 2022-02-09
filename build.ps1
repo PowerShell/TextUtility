@@ -15,7 +15,7 @@ param (
 try {
     Push-Location "$PSScriptRoot/src/code"
 
-    $outPath = "$PSScriptRoot/out"
+    $outPath = "$PSScriptRoot/out/Microsoft.PowerShell.TextUtility"
 
     if ($Clean) {
         if (Test-Path $outPath) {
@@ -26,7 +26,7 @@ try {
         dotnet clean
     }
 
-    dotnet publish --output "$PSScriptRoot/out" --configuration $Configuration
+    dotnet publish --output $outPath --configuration $Configuration
 }
 finally {
     Pop-Location
