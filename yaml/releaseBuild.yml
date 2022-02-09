@@ -51,6 +51,12 @@ stages:
       demands:
       - ImageOverride -equals PSMMS2019-Secure
     steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk'
+      inputs:
+        packageType: sdk
+        includePreviewVersions: true
+        version: 6.x
     - powershell: |
         Get-ChildItem -Path env:
       displayName: Capture environment
