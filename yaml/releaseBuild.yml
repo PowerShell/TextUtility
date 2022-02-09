@@ -67,7 +67,8 @@ stages:
     - group: ESRP
     displayName: Signing Build
     dependsOn: 'ReleaseBuild'
-    pool: PowerShell1ES
+    pool:
+      name: PowerShell1ES
       demands:
       - ImageOverride -equals PSMMS2019-Secure
     steps:
