@@ -47,7 +47,7 @@ stages:
     - group: ESRP
     displayName: Build and Sign
     pool:
-      name: PowerShell1ES
+      name: 1ES
       demands:
       - ImageOverride -equals PSMMS2019-Secure
     steps:
@@ -115,7 +115,7 @@ stages:
   jobs:
   - job: Compliance_Job
     pool:
-      name: PowerShell1ES
+      name: 1ES
       demands:
       - ImageOverride -equals PSMMS2019-Secure
     steps:
