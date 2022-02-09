@@ -39,7 +39,7 @@ resources:
     name: PowerShell/compliance
 
 stages:
-- stage: Build and Sign
+- stage: BuildAndSign
   displayName: Build and Sign
   jobs:
   - job: 'BuildAndSign'
