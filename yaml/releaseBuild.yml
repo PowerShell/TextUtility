@@ -55,7 +55,6 @@ stages:
         Get-ChildItem -Path env:
       displayName: Capture environment
       condition: succeededOrFailed()
-    steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
         Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force -ErrorAction Ignore
