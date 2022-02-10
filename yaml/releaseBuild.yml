@@ -80,7 +80,7 @@ stages:
         # the folder which contains the binaries to sign
         buildOutputPath: $(Build.SourcesDirectory)/out
         # the location to put the signed output
-        signOutputPath: $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility
+        signOutputPath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
         # the certificate ID to use
         certificateId: "CP-460906"
         # The file pattern to use
@@ -101,7 +101,7 @@ stages:
 
     - pwsh: |
         New-Item -Path $(Build.SourcesDirectory)/out/SignedZip -ItemType Directory -ErrorAction Ignore
-        Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/out/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
+        Compress-Archive -Path $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/out/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
       displayName: 'Compress archive'
       condition: succeededOrFailed()
 
