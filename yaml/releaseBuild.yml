@@ -83,7 +83,7 @@ stages:
         # the location to put the signed output
         signOutputPath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         # the certificate ID to use
-        certificateId: "CP-230012"
+        certificateId: "CP-460906"
         # The file pattern to use
         # If not using minimatch: comma separated, with * supported
         # If using minimatch: newline separated, with !, **, and * supported.
