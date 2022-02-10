@@ -64,7 +64,8 @@ stages:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
         Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force -ErrorAction Ignore
-        Remove-Item -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -Recurse -Force -ErrorAction Ignore
+        Remove-Item -Path $(Build.SourcesDirectory)/out -Recurse -Force -ErrorAction Ignore
+        Remove-Item -Path $(Build.SourcesDirectory)/signed -Recurse -Force -ErrorAction Ignore
         .\build.ps1 -Clean
         Remove-Item .\out\*.pdb
         $packageVersion = (Import-PowerShellDataFile $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility/Microsoft.PowerShell.TextUtility.psd1).ModuleVersion
@@ -80,7 +81,7 @@ stages:
         # the folder which contains the binaries to sign
         buildOutputPath: $(Build.SourcesDirectory)/out
         # the location to put the signed output
-        signOutputPath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
+        signOutputPath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         # the certificate ID to use
         certificateId: "CP-460906"
         # The file pattern to use
@@ -101,18 +102,18 @@ stages:
 
     - pwsh: |
         New-Item -Path $(Build.SourcesDirectory)/out/SignedZip -ItemType Directory -ErrorAction Ignore
-        Compress-Archive -Path $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/out/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
+        Compress-Archive -Path $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
       displayName: 'Compress archive'
       condition: succeededOrFailed()
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
+        targetpath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         artifactName: Signed
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/out/SignedZip
+        targetpath: $(Build.SourcesDirectory)/SignedZip
         artifactName: SignedZip
 
 - stage: compliance
