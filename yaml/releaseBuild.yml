@@ -95,13 +95,13 @@ stages:
 
     - template: Sbom.yml@ComplianceRepo
       parameters:
-        BuildDropPath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
+        BuildDropPath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         Build_Repository_Uri: 'https://github.com/powershell/textutility'
         PackageName: 'Microsoft.PowerShell.TextUtility'
         PackageVersion: $(PackageVersion)
 
     - pwsh: |
-        New-Item -Path $(Build.SourcesDirectory)/out/SignedZip -ItemType Directory -ErrorAction Ignore
+        New-Item -Path $(Build.SourcesDirectory)/SignedZip -ItemType Directory -ErrorAction Ignore
         Compress-Archive -Path $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
       displayName: 'Compress archive'
       condition: succeededOrFailed()
