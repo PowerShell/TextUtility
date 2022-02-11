@@ -39,7 +39,7 @@ resources:
     name: PowerShell/compliance
 
 stages:
-- stage: Build and Sign
+- stage: BuildAndSign
   displayName: Build and Sign
   jobs:
   - job: 'BuildAndSign'
@@ -51,15 +51,21 @@ stages:
       demands:
       - ImageOverride -equals PSMMS2019-Secure
     steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk'
+      inputs:
+        packageType: sdk
+        includePreviewVersions: true
+        version: 6.x
     - powershell: |
         Get-ChildItem -Path env:
       displayName: Capture environment
       condition: succeededOrFailed()
-    steps:
     - pwsh: |
         # build agents get reused so we make sure to remove the old archive
         Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force -ErrorAction Ignore
-        Remove-Item -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -Recurse -Force -ErrorAction Ignore
+        Remove-Item -Path $(Build.SourcesDirectory)/out -Recurse -Force -ErrorAction Ignore
+        Remove-Item -Path $(Build.SourcesDirectory)/signed -Recurse -Force -ErrorAction Ignore
         .\build.ps1 -Clean
         Remove-Item .\out\*.pdb
         $packageVersion = (Import-PowerShellDataFile $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility/Microsoft.PowerShell.TextUtility.psd1).ModuleVersion
@@ -75,9 +81,9 @@ stages:
         # the folder which contains the binaries to sign
         buildOutputPath: $(Build.SourcesDirectory)/out
         # the location to put the signed output
-        signOutputPath: $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility
+        signOutputPath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         # the certificate ID to use
-        certificateId: "CP-230012"
+        certificateId: "CP-460906"
         # The file pattern to use
         # If not using minimatch: comma separated, with * supported
         # If using minimatch: newline separated, with !, **, and * supported.
@@ -89,30 +95,30 @@ stages:
 
     - template: Sbom.yml@ComplianceRepo
       parameters:
-        BuildDropPath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
+        BuildDropPath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         Build_Repository_Uri: 'https://github.com/powershell/textutility'
         PackageName: 'Microsoft.PowerShell.TextUtility'
         PackageVersion: $(PackageVersion)
 
     - pwsh: |
-        New-Item -Path $(Build.SourcesDirectory)/out/SignedZip -ItemType Directory -ErrorAction Ignore
-        Compress-Archive -Path $(Build.SourcesDirectory)/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/out/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
+        New-Item -Path $(Build.SourcesDirectory)/SignedZip -ItemType Directory -ErrorAction Ignore
+        Compress-Archive -Path $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
       displayName: 'Compress archive'
       condition: succeededOrFailed()
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility
+        targetpath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         artifactName: Signed
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/out/SignedZip
+        targetpath: $(Build.SourcesDirectory)/SignedZip
         artifactName: SignedZip
 
 - stage: compliance
   displayName: Compliance
-  dependsOn: Build
+  dependsOn: BuildAndSign
   jobs:
   - job: Compliance_Job
     pool:

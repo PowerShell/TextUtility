@@ -14,6 +14,6 @@ jobs:
         artifactName: out
         targetPath: '$(Build.SourcesDirectory)/out'
     - pwsh: |
-        Import-Module ./out/Microsoft.PowerShell.TextUtility.psd1
+        Import-Module ./out/Microsoft.PowerShell.TextUtility
         Invoke-Pester -Path ./test -OutputFormat NUnitXml -EnableExit
     condition: succeeded()
