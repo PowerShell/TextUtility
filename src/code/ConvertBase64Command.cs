@@ -26,6 +26,10 @@ namespace Microsoft.PowerShell.TextUtility
 
         protected override void ProcessRecord()
         {
+            while (EncodedText.Length % 4 != 0)
+            {
+                EncodedText += "=";
+            }
             var base64Bytes = Convert.FromBase64String(EncodedText);
 
             if (AsByteArray)
