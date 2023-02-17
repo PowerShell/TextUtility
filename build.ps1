@@ -167,26 +167,3 @@ if ( $Test ) {
     Test-Module
 }
 
-
-<#
-try {
-    Push-Location "$PSScriptRoot/src/code"
-
-    $outPath = "$PSScriptRoot/out/Microsoft.PowerShell.TextUtility"
-
-    if ($Clean) {
-        if (Test-Path $outPath) {
-            Write-Verbose "Deleting $outPath"
-            Remove-Item -recurse -force -path $outPath
-        }
-
-        dotnet clean
-    }
-
-    dotnet publish --output $outPath --configuration $Configuration
-}
-finally {
-    Pop-Location
-}
-
-#>
