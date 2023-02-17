@@ -1,0 +1,786 @@
+  PID TTY           TIME CMD
+    1 ??        10:14.30 launchd
+   98 ??         2:22.73 logd
+   99 ??         0:00.32 smd
+  100 ??         0:07.62 UserEventAgent
+  103 ??         0:02.18 uninstalld
+  104 ??        19:06.64 fseventsd
+  105 ??         0:11.72 mediaremoted
+  107 ??         0:16.55 systemstats
+  109 ??         0:12.40 configd
+  110 ??         0:00.33 endpointsecurityd
+  111 ??         2:16.74 powerd
+  112 ??         0:03.55 biomed
+  114 ??         0:04.27 amfid
+  116 ??         0:09.78 remoted
+  118 ??         0:00.04 keybagd
+  119 ??         0:00.67 softwareupdated
+  121 ??         0:03.45 watchdogd
+  126 ??         0:01.21 iconservicesd
+  127 ??         0:17.47 kernelmanagerd
+  128 ??         0:07.12 diskarbitrationd
+  132 ??         1:08.84 coreduetd
+  133 ??         0:05.66 syslogd
+  136 ??         0:00.02 thermalmonitord
+  137 ??         1:42.61 opendirectoryd
+  138 ??         0:07.52 apsd
+  139 ??         3:12.00 launchservicesd
+  140 ??         0:00.93 timed
+  141 ??         0:00.80 usbmuxd
+  142 ??         0:14.69 securityd
+  143 ??         0:00.01 auditd
+  147 ??         0:00.04 autofsd
+  148 ??         0:00.58 displaypolicyd
+  149 ??         0:25.19 dasd
+  152 ??         0:26.94 distnoted
+  153 ??         0:00.06 AppleCredentialManagerDaemon
+  155 ??         0:00.02 dirhelper
+  156 ??         0:00.11 logind
+  157 ??         0:00.31 revisiond
+  158 ??         0:00.02 KernelEventAgent
+  159 ??         0:03.59 usermanagerd
+  162 ??         3:32.80 notifyd
+  163 ??         0:06.75 sandboxd
+  164 ??         0:05.84 corebrightnessd
+  165 ??         0:02.17 AirPlayXPCHelper
+  166 ??         0:00.74 com.apple.cmio.registerassistantservice
+  168 ??         1:00.54 cfprefsd
+  169 ??         5:00.20 syspolicyd
+  170 ??         0:02.14 logd_helper
+  171 ??         0:00.05 aslmanager
+  172 ??       188:45.35 WindowServer
+  173 ??         0:45.10 tccd
+  178 ??         0:20.43 analyticsd
+  195 ??         0:03.15 authd
+  209 ??         1:04.69 runningboardd
+  212 ??         0:00.31 sysextd
+  214 ??         1:33.11 lsd
+  215 ??         0:05.67 coreservicesd
+  224 ??         0:01.99 distnoted
+  233 ??         0:20.19 loginwindow
+  240 ??         1:10.13 mDNSResponder
+  243 ??         0:02.08 distnoted
+  247 ??         0:01.56 backgroundtaskmanagementd
+  248 ??         1:20.21 trustd
+  258 ??         0:00.01 multiversed
+  259 ??         0:00.04 com.apple.ifdreader
+  262 ??         0:09.03 nehelper
+  263 ??         0:06.85 nsurlsessiond
+  264 ??         0:00.06 apfsd
+  266 ??         0:00.05 trustdFileHelper
+  268 ??         0:20.70 airportd
+  274 ??         0:16.27 contextstored
+  276 ??       100:00.33 coreaudiod
+  278 ??         0:00.09 usbd
+  279 ??         0:00.02 installerdiagwatcher
+  280 ??         1:02.34 ioupsd
+  282 ??         0:00.02 ethcheck
+  283 ??         0:00.10 VDCAssistant
+  287 ??         0:00.01 csnameddatad
+  288 ??       104:43.99 backupd
+  291 ??         0:00.54 nesessionmanager
+  292 ??         0:02.15 distnoted
+  293 ??         0:00.10 systemstatusd
+  294 ??         0:00.06 awdd
+  295 ??         1:10.40 mobileassetd
+  297 ??         0:40.05 symptomsd
+  298 ??         0:00.05 cryptexd
+  299 ??         0:00.03 tzd
+  300 ??         0:01.42 com.apple.CodeSigningHelper
+  302 ??         0:00.03 PowerUIAgent
+  303 ??         0:02.95 mDNSResponderHelper
+  306 ??         0:02.85 distnoted
+  307 ??         0:02.58 com.apple.geod
+  308 ??         0:17.12 softwareupdated
+  309 ??         0:00.14 cron
+  310 ??         0:00.16 secinitd
+  311 ??         0:00.04 cfprefsd
+  312 ??         0:00.33 trustd
+  314 ??         0:00.65 findmydeviced
+  315 ??         0:02.22 distnoted
+  316 ??         0:00.61 com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  317 ??         0:00.05 containermanagerd
+  328 ??         0:02.26 distnoted
+  337 ??         0:16.49 backupd-helper
+  345 ??         3:39.31 UVCAssistant
+  346 ??         0:00.09 containermanagerd
+  347 ??         0:00.04 suhelperd
+  348 ??         0:00.19 wifip2pd
+  351 ??         0:01.69 diskmanagementd
+  353 ??         0:00.02 WiFiCloudAssetsXPCService
+  357 ??         0:21.14 storagekitd
+  359 ??         0:41.32 Core Audio Driver (MSTeamsAudioDevice.driver)
+  362 ??         0:00.07 writeconfig
+  366 ??         0:00.37 aned
+  367 ??         0:21.84 locationd
+  368 ??         0:02.46 iconservicesagent
+  369 ??         3:21.98 XprotectService
+  370 ??         0:00.04 containermanagerd
+  372 ??         0:00.07 AudioComponentRegistrar
+  376 ??        79:51.65 wdavdaemon
+  378 ??         1:14.22 com.spitfireaudio.LibraryManagerHelper
+  380 ??        17:16.27 dlpdaemon
+  382 ??         0:04.57 IntuneMdmDaemon
+  384 ??         0:13.85 licenseDaemon
+  385 ??        14:27.18 epsext
+  393 ??         0:00.03 com.apple.audio.SandboxHelper
+  394 ??         0:21.24 searchpartyd
+  400 ??         0:35.74 Core Audio Driver (ZoomAudioDevice.driver)
+  409 ??         0:02.86 rtcreportingd
+  413 ??         0:00.02 ReportCrash
+  448 ??         1:26.78 netext
+  465 ??         0:00.14 com.apple.audio.DriverHelper
+  468 ??         0:33.72 audioclocksyncd
+  469 ??         0:00.85 coresymbolicationd
+  483 ??         0:00.55 aceagent
+  492 ??         0:00.16 kdc
+  499 ??         0:02.31 distnoted
+  501 ??         0:00.38 secinitd
+  504 ??         0:01.07 netbiosd
+  505 ??         0:00.60 corekdld
+  506 ??         0:00.52 bosUpdateProxy
+  507 ??         0:00.79 SubmitDiagInfo
+  509 ??        85:12.03 wdavdaemon_enterprise
+  510 ??         0:00.03 CVMServer
+  511 ??         0:02.25 distnoted
+  516 ??         0:00.02 com.apple.DriverKit-IOUserDockChannelSerial
+  517 ??         2:14.10 com.apple.DriverKit.AppleUserECM
+  518 ??        15:21.73 com.apple.AppleUserHIDDrivers
+  519 ??         0:00.01 com.apple.DriverKit.AppleUserECM
+  525 ??         1:19.62 telemetryd_v2
+  526 ??         0:00.09 siriinferenced
+  530 ??         2:48.62 dlp_agent
+  535 ??         0:00.19 securityd_service
+  537 ??         0:02.20 distnoted
+  538 ??         0:41.10 CAReportingService
+  540 ??         0:00.34 thermald
+  556 ??         0:02.80 distnoted
+  561 ??         0:00.13 hidd
+  568 ??         0:02.08 distnoted
+  570 ??         0:24.24 lsd
+  572 ??         0:00.01 csnameddatad
+  573 ??         0:01.89 trustd
+  574 ??         0:00.37 wifianalyticsd
+  579 ??         0:00.03 BlueTool
+  587 ??         0:00.76 mobileactivationd
+  603 ??         0:00.05 appinstalld
+  604 ??         0:00.02 com.apple.MobileInstallationHelperService
+  605 ??         0:02.03 distnoted
+  607 ??         0:00.06 secd
+  610 ??         0:00.05 online-authd
+  615 ??         0:00.21 colorsync.displayservices
+  616 ??         0:00.02 com.apple.ColorSyncXPCAgent
+  617 ??         0:00.09 colorsyncd
+  618 ??         0:00.59 MTLCompilerService
+  619 ??         9:34.15 sysmond
+  620 ??         0:01.13 appleeventsd
+  622 ??         0:00.21 symptomsd-diag
+  623 ??         0:00.71 systemstats
+  624 ??         0:00.20 sharedfilelistd
+  625 ??         0:00.03 bootinstalld
+  639 ??         0:00.04 com.apple.AccountPolicyHelper
+  654 ??         0:00.08 coreauthd
+  655 ??         0:00.09 AppSSODaemon
+  657 ??         0:00.83 biometrickitd
+  658 ??         0:54.23 distnoted
+  662 ??         1:03.48 secd
+  663 ??        12:51.25 cfprefsd
+  664 ??         0:00.31 TrustedPeersHelper
+  667 ??         0:04.29 com.apple.AmbientDisplayAgent
+  668 ??         0:00.01 com.apple.ColorSyncXPCAgent
+  672 ??         0:20.26 UserEventAgent
+  673 ??         0:04.15 gamecontrollerd
+  674 ??         2:05.72 ContinuityCaptureAgent
+  675 ??         2:12.29 knowledge-agent
+  679 ??         0:01.14 com.apple.sbd
+  680 ??         0:01.82 universalaccessd
+  682 ??         0:00.66 BackgroundTaskManagementAgent
+  683 ??         1:05.60 lsd
+  684 ??         0:54.49 AXVisualSupportAgent
+  685 ??         0:36.08 tccd
+  686 ??         0:57.23 rapportd
+  687 ??         0:00.02 csnameddatad
+  688 ??         1:45.51 trustd
+  689 ??         0:28.90 accountsd
+  690 ??         0:04.28 homed
+  693 ??         0:00.64 pboard
+  694 ??         0:14.22 identityservicesd
+  695 ??         0:01.90 distnoted
+  696 ??         0:03.06 usernoted
+  698 ??         0:04.44 donotdisturbd
+  699 ??         0:11.34 containermanagerd
+  700 ??         0:19.59 BiomeAgent
+  701 ??         1:15.76 nearbyd
+  702 ??         0:03.66 WirelessRadioManagerd
+  703 ??         3:37.11 ControlCenter
+  704 ??         0:21.77 ContextStoreAgent
+  705 ??         1:19.68 sharingd
+  706 ??         0:03.16 gamecontrolleragentd
+  710 ??         0:00.05 followupd
+  712 ??         0:25.82 secinitd
+  714 ??         1:35.29 contactsd
+  715 ??         0:01.60 sharedfilelistd
+  718 ??         0:04.67 bird
+  720 ??         0:00.49 ScreenTimeAgent
+  721 ??         0:51.38 WindowManager
+  723 ??         0:18.79 cloudd
+  724 ??         0:03.60 filecoordinationd
+  725 ??         1:02.10 fileproviderd
+  729 ??         0:22.44 nsurlsessiond
+  730 ??         0:00.01 com.apple.DictionaryServiceHelper
+  731 ??         0:00.27 keyboardservicesd
+  735 ??         0:00.94 dmd
+  736 ??         0:09.67 pkd
+  738 ??         0:01.66 familycircled
+  739 ??         0:43.48 axassetsd
+  740 ??         0:02.08 pbs
+  742 ??         0:00.52 AudioComponentRegistrar
+  744 ??         0:01.02 systemsoundserverd
+  746 ??         0:02.82 akd
+  750 ??         0:00.03 USBAgent
+  752 ??         0:01.60 adid
+  755 ??         0:28.56 spindump
+  756 ??         0:00.01 spindump_agent
+  757 ??         0:00.80 cdpd
+  758 ??         0:00.20 CarbonComponentScannerXPC
+  768 ??         0:00.82 talagent
+  769 ??         0:00.01 PlugInLibraryService
+  770 ??         0:01.39 siriactionsd
+  771 ??         0:01.08 CoreLocationAgent
+  772 ??         0:11.11 calaccessd
+  774 ??         0:01.89 distnoted
+  775 ??         0:09.89 syncdefaultsd
+  776 ??         0:03.12 transparencyd
+  777 ??         0:00.32 ctkd
+  778 ??         0:02.97 CommCenter
+  779 ??        25:47.12 corespotlightd
+  780 ??         0:15.18 NotificationCenter
+  781 ??         0:00.03 APFSUserAgent
+  783 ??         0:35.20 fontd
+  784 ??         0:06.55 routined
+  786 ??         0:00.80 WiFiAgent
+  787 ??         0:01.07 fontworker
+  788 ??         0:10.59 callservicesd
+  789 ??         0:03.04 appstored
+  790 ??         0:02.39 ContextService
+  791 ??         0:00.08 replayd
+  792 ??         0:01.74 sociallayerd
+  793 ??         0:12.42 iconservicesagent
+  794 ??         0:02.52 com.apple.hiservices-xpcservice
+  795 ??         7:09.68 suggestd
+  796 ??         0:06.67 com.apple.geod
+  798 ??         0:01.82 fmfd
+  800 ??         0:02.16 mobiletimerd
+  801 ??         0:05.40 ViewBridgeAuxiliary
+  802 ??         0:00.99 CoreServicesUIAgent
+  803 ??         0:04.02 ContainerMetadataExtractor
+  804 ??         0:00.01 LoginUserService
+  806 ??         0:00.24 Keychain Circle Notification
+  807 ??         0:00.13 ProtectedCloudKeySyncing
+  809 ??         0:00.86 com.apple.StreamingUnzipService
+  810 ??         0:00.24 CloudKeychainProxy
+  811 ??         0:01.77 neagent
+  813 ??         0:00.74 akd
+  814 ??         0:01.02 AssetCacheLocatorService
+  815 ??         0:00.05 installcoordinationd
+  816 ??         0:00.07 AssetCache
+  817 ??         0:01.84 distnoted
+  818 ??         0:00.05 AssetCacheTetheratorService
+  819 ??         0:02.01 AppSSOAgent
+  821 ??         0:07.69 CMFSyncAgent
+  833 ??         0:04.66 progressd
+  836 ??         0:04.07 amsaccountsd
+  838 ??         0:14.76 amsengagementd
+  844 ??         0:01.38 com.apple.CloudPhotosConfiguration
+  845 ??         0:01.16 iCloudNotificationAgent
+  847 ??         0:08.20 networkserviceproxy
+  848 ??         5:02.97 photolibraryd
+  849 ??         0:00.30 SoftwareUpdateNotificationManager
+  851 ??         0:01.56 ScopedBookmarkAgent
+  854 ??         0:00.28 nfcd
+  863 ??         0:00.05 seld
+  873 ??         0:01.80 distnoted
+  875 ??         0:00.70 cloudphotod
+  877 ??         0:00.81 cloudpaird
+  879 ??         0:00.57 remotemanagementd
+  885 ??         0:00.05 InteractiveLegacyProfilesSubscriber
+  886 ??         0:01.80 distnoted
+  887 ??         0:00.04 LegacyProfilesSubscriber
+  888 ??         0:00.04 PasscodeSettingsSubscriber
+  890 ??         0:00.03 AccountSubscriber
+  891 ??         0:00.03 ManagementTestSubscriber
+  892 ??         0:00.01 PlugInLibraryService
+  893 ??         0:00.14 XProtectBehaviorService
+  894 ??         0:56.66 mdbulkimport
+  895 ??         0:09.11 swcd
+  897 ??         0:21.06 assistantd
+  898 ??         0:01.37 linkd
+  899 ??         0:00.03 com.apple.audio.ComponentTagHelper
+  900 ??         0:17.87 siriknowledged
+  901 ??         0:00.03 ctkd
+  902 ??         0:00.27 coreauthd
+  904 ??         0:00.08 extensionkitservice
+  905 ??         0:01.36 com.apple.siri.embeddedspeech
+  906 ??         0:00.17 FindMyWidgetItems
+  907 ??         0:00.08 PhotosReliveWidget
+  908 ??         0:00.45 NewsToday2
+  909 ??         0:00.10 com.apple.Notes.WidgetExtension
+  910 ??         0:00.10 CalendarWidgetExtension
+  912 ??         0:00.17 WeatherWidget
+  913 ??         0:05.05 triald
+  914 ??         0:00.12 PodcastsWidget
+  915 ??         0:00.10 RemindersWidgetExtension
+  916 ??         0:00.12 FindMyWidgetPeople
+  917 ??         0:00.12 StocksWidget
+  918 ??         0:00.05 TipsAppWidget-macOSExtension
+  919 ??         0:00.11 ScreenTimeWidgetExtension
+  920 ??         0:00.09 HomeWidget
+  921 ??         0:00.13 WorldClockWidget
+  923 ??         0:00.42 NewsTag
+  924 ??         0:00.70 StatusKitAgent
+  925 ??         0:03.96 imagent
+  926 ??         0:00.13 com.apple.FaceTime.FTConversationService
+  927 ??         9:36.72 IMDPersistenceAgent
+  928 ??         0:00.10 GSSCred
+  929 ??         0:19.02 useractivityd
+  930 ??         0:00.51 mediaremoteagent
+  931 ??         0:08.77 avconferenced
+  932 ??         0:00.99 SidecarRelay
+  933 ??         1:11.40 UniversalControl
+  934 ??         0:13.46 biomesyncd
+  941 ??         0:00.06 mediasharingd
+  943 ??         0:15.29 deleted
+  950 ??         0:01.64 com.apple.siri.embeddedspeech
+  955 ??         0:09.75 searchpartyuseragent
+  956 ??         0:00.73 UIKitSystem
+  959 ??         0:00.12 fairplayd
+  961 ??         0:00.01 ReportCrash
+  968 ??         0:00.50 RemoteManagementAgent
+  969 ??         0:00.06 InteractiveLegacyProfilesSubscriber
+  970 ??         0:00.04 LegacyProfilesSubscriber
+  971 ??         0:00.04 PasscodeSettingsSubscriber
+  972 ??         0:00.05 AccountSubscriber
+  973 ??         0:00.03 ManagementTestSubscriber
+  980 ??         0:01.45 csimporter
+ 1013 ??         0:13.12 trustd
+ 1014 ??         0:47.46 mdbulkimport
+ 1017 ??         0:00.01 csnameddatad
+ 1048 ??         0:00.13 containermanagerd
+ 1062 ??         0:08.45 Google Chrome Helper (Renderer)
+ 1064 ??         0:00.46 maild
+ 1066 ??         0:00.50 financed
+ 1067 ??         0:00.03 extensionkitservice
+ 1069 ??         0:00.04 CalendarFocusConfigurationExtension
+ 1070 ??         0:00.05 SafariLinkExtension
+ 1071 ??         0:00.03 MailShortcutsExtension
+ 1072 ??         0:00.03 MessagesActionExtension
+ 1079 ??         0:00.34 UsageTrackingAgent
+ 1080 ??         0:01.85 adprivacyd
+ 1082 ??         0:17.43 corespeechd
+ 1083 ??         0:00.83 com.apple.siri.embeddedspeech
+ 1084 ??         2:10.78 assistant_service
+ 1088 ??         0:01.33 parsecd
+ 1090 ??         0:10.90 itunescloudd
+ 1165 ??         0:01.23 ndoagent
+ 1187 ??         0:00.18 diagnosticextensionsd
+ 1188 ??         0:10.36 CoreSpotlightService
+ 1221 ??         0:00.44 avatarsd
+ 1298 ??         0:00.01 installerdiagd
+ 1314 ??         0:00.37 intelligenceplatformd
+ 1325 ??         0:00.34 sirittsd
+ 1326 ??         0:10.93 MTLAssetUpgraderD
+ 1333 ??         0:03.22 com.apple.quicklook.ThumbnailsAgent
+ 1334 ??         0:01.22 ThumbnailExtension_macOS
+ 1335 ??         0:03.88 QuickLookSatellite
+ 1339 ??         4:07.68 Mail
+ 1348 ??         0:00.04 ASPCarryLog
+ 1349 ??         0:09.16 appstoreagent
+ 1350 ??         0:00.03 metrickitd
+ 1351 ??         0:00.03 com.apple.AppStoreDaemon.StorePrivilegedTaskService
+ 1352 ??         0:01.10 promotedcontentd
+ 1357 ??         0:03.52 osanalyticshelper
+ 1358 ??         0:01.41 diagnostics_agent
+ 1359 ??         0:00.02 CrashReporterSupportHelper
+ 1555 ??         0:00.03 localizationswitcherd
+ 1597 ??         0:00.52 mapspushd
+ 1603 ??         0:00.02 spotlightknowledged
+ 1612 ??         2:50.70 media-indexer
+ 1615 ??         2:29.08 AMPLibraryAgent
+ 1621 ??         0:00.08 PodcastContentService
+ 1622 ??         0:00.16 com.apple.BKAgentService
+ 1623 ??         0:00.08 com.apple.audio.SandboxHelper
+ 1624 ??         0:00.19 AMPArtworkAgent
+ 1625 ??         0:00.03 mlruntimed
+ 2165 ??         0:00.02 microstackshot
+ 2403 ??         0:16.16 Spotlight
+ 2404 ??         0:02.02 commerce
+ 2515 ??         0:03.75 System Settings
+ 2517 ??         6:27.97 Teams
+ 2521 ??         5:20.45 Terminal
+ 2523 ??         6:01.88 Music
+ 2524 ??        15:11.31 Microsoft Remote Desktop
+ 2525 ??        10:51.71 Messages
+ 2527 ??         7:54.41 Activity Monitor
+ 2528 ??         6:05.01 Microsoft Edge
+ 2529 ??         1:29.90 iTerm2
+ 2533 ??         0:53.53 Dock
+ 2534 ??         3:16.14 SystemUIServer
+ 2535 ??         8:58.44 Finder
+ 2540 ??         0:00.36 QuickLookUIService
+ 2549 ??         0:00.04 automountd
+ 2551 ??         0:00.08 extensionkitservice
+ 2552 ??         0:00.25 VTDecoderXPCService
+ 2553 ??         0:00.27 AMPDeviceDiscoveryAgent
+ 2555 ??         0:00.24 ACCFinderSync
+ 2556 ??         0:00.25 deleted_helper
+ 2557 ??         0:00.92 Appearance
+ 2560 ??         0:00.10 ctkahp
+ 2561 ??         0:00.06 ctkahp
+ 2563 ??         0:00.20 imklaunchagent
+ 2564 ??         0:00.07 geodMachServiceBridge
+ 2565 ??         0:27.79 installd
+ 2566 ??         0:00.11 storedownloadd
+ 2567 ??         0:00.71 cloudd
+ 2568 ??         0:00.09 system_installd
+ 2572 ??         0:01.27 PAH_Extension
+ 2573 ??         0:00.44 UserNotificationCenter
+ 2575 ??         0:00.27 TextInputSwitcher
+ 2576 ??         0:06.88 AppleIDSettings
+ 2580 ??         0:00.08 PlugInLibraryService
+ 2581 ??         0:00.26 colorsync.useragent
+ 2582 ??         0:00.01 com.apple.ColorSyncXPCAgent
+ 2583 ??         0:00.02 SafeEjectGPUAgent
+ 2584 ??         0:00.03 SafeEjectGPUService
+ 2586 ??         0:00.62 contentlinkingd
+ 2588 ??         0:00.04 com.apple.audio.SandboxHelper
+ 2589 ??         0:00.01 com.apple.HasTRB
+ 2590 ??         0:02.41 OneDrive File Provider
+ 2591 ??         0:00.42 Touch ID & Password
+ 2592 ??         0:00.49 HeadphoneSettingsExtension
+ 2593 ??         0:48.20 PowerPreferences
+ 2594 ??         0:00.39 FollowUpSettingsExtension
+ 2595 ??         0:02.04 FamilySettings
+ 2598 ??         0:00.43 TrackpadExtension
+ 2600 ??         0:00.40 ClassKitSettings
+ 2604 ??         0:28.93 dataaccessd
+ 2608 ??         0:00.05 AssetCacheManagerService
+ 2609 ??         0:00.38 VisualizerService
+ 2610 ??         0:00.08 storelegacy
+ 2611 ??         0:00.45 WalletSettingsExtension
+ 2613 ??         0:00.73 storeuid
+ 2614 ??         0:00.73 ClassroomSettings
+ 2625 ??         0:03.80 studentd
+ 2631 ??         0:00.46 MouseExtension
+ 2632 ??         0:00.34 recentsd
+ 2634 ??         0:03.12 com.apple.dock.extra
+ 2635 ??         0:07.67 com.apple.WebKit.WebContent
+ 2636 ??         0:00.06 com.apple.accessibility.mediaaccessibilityd
+ 2637 ??         0:00.05 com.apple.audio.SandboxHelper
+ 2639 ??         0:00.13 QuickLookSatellite
+ 2640 ??         0:01.28 reversetemplated
+ 2641 ??         0:01.76 com.apple.WebKit.Networking
+ 2642 ??         0:00.90 CallHistoryPluginHelper
+ 2644 ??         0:01.59 passd
+ 2646 ??         1:14.13 com.apple.Safari.SafeBrowsing.Service
+ 2648 ??         0:00.07 msedge_crashpad_handler
+ 2651 ??         0:00.01 PlugInLibraryService
+ 2654 ??         0:00.77 peopled
+ 2657 ??         0:00.40 VPN
+ 2658 ??         0:00.02 iTermServer-3.4.19
+ 2660 ??         0:04.46 gamed
+ 2662 ??         1:59.13 Microsoft Edge Helper (GPU)
+ 2664 ??         2:02.89 Microsoft Edge Helper
+ 2665 ??         0:00.07 chrome_crashpad_handler
+ 2670 ??         0:01.65 pwSafe
+ 2675 ??         0:00.44 GameControllerMacSettings
+ 2678 ??         0:10.15 Microsoft Edge Helper
+ 2680 ??        40:51.88 Microsoft Teams Helper (GPU)
+ 2685 ??         0:00.02 misagent
+ 2686 ??         0:01.59 VTDecoderXPCService
+ 2687 ??         0:24.04 Microsoft Teams Helper
+ 2688 ??         0:00.02 pidinfo
+ 2689 ??         0:00.15 VTDecoderXPCService
+ 2692 ??         0:02.20 storekitagent
+ 2694 ??         0:00.09 SafariLaunchAgent
+ 2698 ??         0:01.75 Microsoft Edge Helper (Renderer)
+ 2699 ??         0:00.02 PlugInLibraryService
+ 2704 ??         0:00.71 Microsoft Teams Helper (Renderer)
+ 2708 ??         0:01.72 Microsoft Edge Helper (Renderer)
+ 2710 ??         0:05.94 Microsoft Edge Helper (Renderer)
+ 2711 ??         0:00.43 CDs & DVDs Settings Extension
+ 2716 ??         0:01.14 lskdd
+ 2718 ??         0:02.64 com.apple.appkit.xpc.openAndSavePanelService
+ 2719 ??         0:02.27 Microsoft Teams Helper
+ 2721 ??         0:00.15 VTEncoderXPCService
+ 2723 ??         0:00.40 QuickLookUIService
+ 2727 ??        39:30.76 Microsoft Teams Helper (Renderer)
+ 2733 ??         0:08.06 AppleSpell
+ 2734 ??         0:00.93 naturallanguaged
+ 2737 ??         0:14.86 heard
+ 2739 ??         0:01.59 IntuneMdmAgent
+ 2741 ??         0:08.76 Microsoft Defender Helper
+ 2744 ??         0:47.33 PanGPS
+ 2746 ??         0:28.45 ChromaCamHelper
+ 2748 ??         0:00.05 sh
+ 2749 ??         0:13.94 dlpagent
+ 2750 ??         0:00.56 icdd
+ 2751 ??         0:28.43 GlobalProtect
+ 2752 ??         0:09.10 Alertus Desktop
+ 2753 ??         1:49.11 AvidLink
+ 2754 ??         0:02.10 askpermissiond
+ 2757 ??         0:15.19 AGMService
+ 2758 ??         0:00.16 AirPlayUIAgent
+ 2763 ??         0:00.05 bluetoothuserd
+ 2765 ??         0:01.98 TextInputMenuAgent
+ 2766 ??         0:00.70 Amazon Music Helper
+ 2767 ??         5:52.63 Stream Deck
+ 2774 ??         0:01.09 NIHardwareAgent
+ 2786 ??         0:00.06 com.apple.audio.SandboxHelper
+ 2791 ??        13:22.95 Time Out
+ 2796 ??         0:00.02 PlugInLibraryService
+ 2801 ??         0:00.02 taskgated
+ 2811 ??         0:07.25 Microsoft Edge Helper
+ 2813 ??         0:00.15 VTEncoderXPCService
+ 2814 ??         0:43.47 Microsoft Edge Helper (Renderer)
+ 2818 ??         0:00.06 com.apple.audio.SandboxHelper
+ 2856 ??       140:06.94 Microsoft Teams Helper (Renderer)
+ 2857 ??         0:00.02 CrashHandler
+ 2885 ??         0:00.78 nsattributedstringagent
+ 2922 ??         2:10.28 mysqld
+ 2931 ??         9:10.75 Microsoft Teams Helper (Renderer)
+ 2943 ??         0:09.94 Microsoft Edge Helper (Renderer)
+ 2958 ??         0:48.01 AdobeIPCBroker
+ 2982 ??         0:02.37 tipsd
+ 3041 ??         0:58.20 Adobe Desktop Service
+ 3044 ??         0:01.84 QtWebEngineProcess
+ 3053 ??         0:00.02 CrashHandler
+ 3059 ??         0:53.19 Adobe Crash Handler
+ 3068 ??         0:00.74 vcxpc
+ 3070 ??         0:00.16 VTDecoderXPCService
+ 3072 ??         0:15.47 Creative Cloud Helper
+ 3073 ??         0:17.59 QtWebEngineProcess
+ 3074 ??         0:00.16 VTEncoderXPCService
+ 3075 ??         0:00.62 QtWebEngineProcess
+ 3089 ??         0:00.02 CrashHandler
+ 3093 ??         0:52.85 Adobe Crash Handler
+ 3103 ??         0:14.45 node
+ 3105 ??         0:00.02 ChromaCamKitAssistant
+ 3119 ??         0:01.00 Plugin
+ 3120 ??         0:01.46 ESDDiscord
+ 3121 ??         0:00.50 QtWebEngineProcess
+ 3122 ??         0:18.80 QtWebEngineProcess
+ 3123 ??         0:10.04 com.nicollasr.streamdeckvsc
+ 3125 ??         0:00.02 TwitchStudioStreamDeck
+ 3126 ??         0:57.40 se.trevligaspel.midi
+ 3127 ??         0:00.52 QtWebEngineProcess
+ 3136 ??         0:00.93 QtWebEngineProcess
+ 3142 ??         0:01.65 QtWebEngineProcess
+ 3143 ??         0:01.87 QtWebEngineProcess
+ 3144 ??         0:02.14 QtWebEngineProcess
+ 3145 ??         0:01.66 QtWebEngineProcess
+ 3149 ??         0:11.67 Creative Cloud Helper
+ 3152 ??         0:00.02 CrashHandler
+ 3158 ??         0:53.06 Adobe Crash Handler
+ 3161 ??         0:00.19 IDSBlastDoorService
+ 3162 ??         0:00.14 BTLEServerAgent
+ 3172 ??         1:53.09 Core Sync
+ 3187 ??         0:00.19 com.adobe.acc.installer.v2
+ 3199 ??         0:00.11 MessagesBlastDoorService
+ 3219 ??         0:00.36 IMTranscoderAgent
+ 3220 ??         0:00.27 MessagesBlastDoorService
+ 3225 ??         0:00.44 QtWebEngineProcess
+ 3231 ??         0:00.33 Adobe Installer
+ 3238 ??         0:38.31 MIDIServer
+ 3252 ??         0:00.01 PlugInLibraryService
+ 3290 ??         0:00.03 loginitemregisterd
+ 3417 ??         0:00.08 check_afp
+ 3463 ??         0:01.21 NIHostIntegrationAgent
+ 3474 ??         0:00.01 PlugInLibraryService
+ 3811 ??         0:00.01 PlugInLibraryService
+ 3817 ??         0:00.04 com.apple.audio.SandboxHelper
+ 3842 ??         0:03.77 VTDecoderXPCService
+ 3892 ??         0:04.37 com.apple.WebKit.WebContent
+ 4064 ??         0:03.52 newsd
+ 4299 ??         0:00.01 ssh-agent
+ 4792 ??         0:00.26 MTLCompilerService
+ 5189 ??         4:26.24 wdavdaemon_unprivileged
+ 5231 ??         1:20.97 Adobe_CCXProcess.node
+ 6661 ??         0:00.15 com.apple.iCloudHelper
+ 6847 ??         0:00.08 mdworker_shared
+ 6901 ??         0:00.09 Google Chrome Helper (Renderer)
+ 6907 ??         0:00.01 livefileproviderd
+ 6910 ??         0:00.04 mdworker_shared
+ 6911 ??         0:00.08 Microsoft Teams Helper (Renderer)
+ 6919 ??         0:00.33 weatherd
+ 6965 ??         0:04.58 PasswordBreachAgent
+ 7051 ??         0:00.08 CategoriesService
+ 7154 ??        21:40.07 Google Chrome
+ 7158 ??         0:00.05 chrome_crashpad_handler
+ 7168 ??        17:22.59 Google Chrome Helper (GPU)
+ 7169 ??         4:07.80 Google Chrome Helper
+ 7172 ??         0:09.23 Google Chrome Helper
+ 7179 ??         0:32.81 VTDecoderXPCService
+ 7276 ??         1:05.98 Google Chrome Helper
+ 7277 ??         0:00.10 VTEncoderXPCService
+ 7278 ??         0:00.05 com.apple.audio.SandboxHelper
+ 8037 ??         0:06.03 com.apple.WebKit.WebContent
+ 8154 ??         0:00.03 memoryanalyticsd
+ 8587 ??         0:22.49 PerfPowerServices
+ 9855 ??         0:00.95 Google Chrome Helper (Renderer)
+ 9860 ??         2:20.71 Google Chrome Helper (Renderer)
+11391 ??         0:13.75 Google Chrome Helper (Renderer)
+11392 ??         1:13.21 Google Chrome Helper (Renderer)
+12262 ??         0:05.35 Google Chrome Helper (Renderer)
+12299 ??         0:01.03 Google Chrome Helper (Renderer)
+12391 ??         0:01.56 DockHelper
+12517 ??         1:32.66 Discord
+12519 ??         0:00.06 chrome_crashpad_handler
+12520 ??        11:07.90 Discord Helper (GPU)
+12521 ??         0:08.02 Discord Helper
+12522 ??         0:00.10 VTDecoderXPCService
+12524 ??         0:00.09 VTEncoderXPCService
+12525 ??        55:33.27 Discord Helper (Renderer)
+12538 ??         0:01.33 Discord Helper
+12559 ??         0:00.03 com.apple.audio.SandboxHelper
+12780 ??         0:00.05 MTLCompilerService
+13091 ??         0:46.04 VTDecoderXPCService
+14791 ??         0:01.53 Microsoft Edge Helper (Renderer)
+15236 ??         0:00.04 com.apple.audio.SandboxHelper
+15237 ??         0:00.17 printtool
+15249 ??         0:05.11 com.apple.SafariPlatformSupport.Helper
+15257 ??         0:00.03 com.apple.ctkpcscd
+16834 ??         0:01.61 package_script_service
+16956 ??         0:00.25 appleaccountd
+19881 ??         0:00.81 LookupViewService
+19927 ??         0:02.32 photoanalysisd
+34545 ??         3:53.79 mds
+34546 ??         0:00.01 PlugInLibraryService
+34547 ??         7:26.80 mds_stores
+34910 ??         0:16.03 mdworker
+35665 ??         0:01.20 mdworker
+35956 ??         0:03.20 Google Chrome Helper (Renderer)
+36179 ??         0:04.89 Google Chrome Helper (Renderer)
+36835 ??         0:00.01 PlugInLibraryService
+36858 ??         0:00.06 DiskUnmountWatcher
+36892 ??         0:00.12 MTLCompilerService
+37656 ??         0:00.03 com.apple.audio.SandboxHelper
+38408 ??         0:01.62 SafariBookmarksSyncAgent
+38426 ??         0:09.63 backgroundassets.user
+38451 ??         0:00.38 proactiveeventtrackerd
+43617 ??         0:00.51 rcd
+45219 ??         0:19.25 MacVim
+46487 ??         0:01.06 QuickLookUIService
+46519 ??         0:00.01 com.apple.tonelibraryd
+47161 ??         3:09.65 Google Chrome Helper (Renderer)
+48190 ??         0:12.88 Docker
+48191 ??         4:00.51 com.docker.backend
+48197 ??         0:02.95 com.docker.backend
+48228 ??         0:37.31 Docker Desktop
+48244 ??         0:18.96 com.docker.vpnkit
+48245 ??         0:07.16 docker
+48247 ??         0:05.61 vpnkit-bridge
+48248 ??         0:02.05 com.docker.driver.amd64-linux
+48249 ??         0:03.66 com.docker.extensions
+48250 ??         0:01.04 com.docker.dev-envs
+48251 ??         0:00.00 <defunct>
+48267 ??         0:01.16 com.docker.virtualization
+48273 ??        44:33.09 com.apple.Virtualization.VirtualMachine
+48276 ??         0:02.62 Docker Desktop Helper (GPU)
+48278 ??         0:00.09 VTDecoderXPCService
+48279 ??         0:00.01 chrome_crashpad_handler
+48280 ??         0:00.21 Docker Desktop Helper
+48282 ??       102:20.33 Docker Desktop Helper (Renderer)
+54642 ??         0:00.39 ExternalQuickLookSatellite-x86_64
+56167 ??         0:00.03 com.apple.audio.SandboxHelper
+56184 ??         0:01.51 CallHistorySyncHelper
+58119 ??         0:09.07 Google Chrome Helper (Renderer)
+58680 ??         1:15.18 Google Chrome Helper (Renderer)
+58795 ??         0:00.12 dprivacyd
+60829 ??         0:00.02 XProtect
+60830 ??         0:02.14 XProtectPluginService
+60834 ??         0:00.02 XProtect
+60835 ??         0:01.99 XProtectPluginService
+61051 ??         0:00.21 MobileSMSSpotlightImporterCatalyst
+61052 ??         0:00.56 com.apple.photos.ImageConversionService
+61053 ??         0:00.59 MessagesBlastDoorService
+62406 ??         0:00.38 OSDUIHelper
+69998 ??         0:00.06 IMAutomaticHistoryDeletionAgent
+71756 ??         5:47.48 Google Chrome Helper (Renderer)
+71932 ??         0:00.40 Google Chrome Helper (Renderer)
+71934 ??         0:09.02 Google Chrome Helper (Renderer)
+71935 ??         0:09.62 Google Chrome Helper (Renderer)
+71936 ??         2:32.75 Google Chrome Helper (Renderer)
+71945 ??         0:30.75 Google Chrome Helper (Renderer)
+71947 ??         0:03.10 Google Chrome Helper (Renderer)
+71948 ??         0:03.27 Google Chrome Helper (Renderer)
+71949 ??         0:00.37 Google Chrome Helper (Renderer)
+71950 ??         0:03.83 Google Chrome Helper (Renderer)
+71952 ??         0:02.99 Google Chrome Helper (Renderer)
+71954 ??         0:03.32 Google Chrome Helper (Renderer)
+71955 ??         0:03.89 Google Chrome Helper (Renderer)
+71956 ??         0:00.35 Google Chrome Helper (Renderer)
+71957 ??         0:04.67 Google Chrome Helper (Renderer)
+71958 ??         0:04.04 Google Chrome Helper (Renderer)
+71959 ??         0:00.36 Google Chrome Helper (Renderer)
+71960 ??         0:02.95 Google Chrome Helper (Renderer)
+71968 ??         0:03.44 Google Chrome Helper (Renderer)
+71969 ??         1:29.94 Google Chrome Helper (Renderer)
+71970 ??         0:00.97 Google Chrome Helper (Renderer)
+72680 ??         1:46.97 bluetoothd
+72703 ??         0:00.01 IOUserBluetoothSerialDriver
+73627 ??         0:12.27 Google Chrome Helper (Renderer)
+75548 ??         0:03.74 knowledgeconstructiond
+76900 ??         0:01.81 Google Chrome Helper (Renderer)
+78475 ??         0:00.92 QtWebEngineProcess
+78476 ??         0:00.92 QtWebEngineProcess
+82319 ??         0:00.01 PlugInLibraryService
+84170 ??         0:00.03 CalendarWidgetExtension
+87412 ??         0:00.02 griddatad
+87439 ??         0:00.03 devicecheckd
+87490 ??         0:00.10 EscrowSecurityAlert
+87536 ??         0:00.01 periodic-wrapper
+87692 ??         0:00.15 applessdstatistics
+87749 ??         0:00.03 sysdiagnose
+87806 ??         0:00.05 proactived
+90659 ??         0:00.33 nbagent
+90662 ??         0:00.03 nbstated
+90884 ??         0:00.68 contactsdonationagent
+92805 ??         0:00.01 chrome_crashpad_handler
+94130 ??         0:53.23 Electron
+94134 ??         0:00.01 chrome_crashpad_handler
+94135 ??         3:09.45 Code Helper (GPU)
+94136 ??         0:00.20 Code Helper
+94137 ??         0:00.10 VTDecoderXPCService
+94138 ??         5:26.03 Code Helper (Renderer)
+94152 ??         0:16.74 Code Helper (Renderer)
+94153 ??         1:44.58 Code Helper (Plugin)
+94154 ??         0:13.43 Code Helper (Renderer)
+94163 ??         0:00.60 Code Helper (Renderer)
+94191 ??         0:35.64 Code Helper (Plugin)
+94227 ??         2:06.71 dotnet
+94286 ??         0:00.50 Code Helper (Plugin)
+97977 ??         4:53.90 Google Chrome Helper (Renderer)
+98046 ??         0:02.69 Google Chrome Helper (Renderer)
+98053 ??         0:22.99 Google Chrome Helper (Renderer)
+98054 ??         0:05.17 Google Chrome Helper (Renderer)
+98058 ??         0:02.85 Google Chrome Helper (Renderer)
+98059 ??         0:02.85 Google Chrome Helper (Renderer)
+98060 ??         0:02.74 Google Chrome Helper (Renderer)
+98061 ??         0:03.55 Google Chrome Helper (Renderer)
+98062 ??         0:02.95 Google Chrome Helper (Renderer)
+98067 ??         0:02.95 Google Chrome Helper (Renderer)
+98076 ??         0:02.66 Google Chrome Helper (Renderer)
+98080 ??         0:02.82 Google Chrome Helper (Renderer)
+98366 ??         0:04.48 Google Chrome Helper (Renderer)
+ 2587 ttys000    0:00.03 login
+ 2596 ttys000    4:07.88 pwsh
+ 5350 ttys000    0:11.76 pwsh
+ 6924 ttys000    0:00.01 ps
+ 2597 ttys001    0:00.02 login
+ 2601 ttys001    0:48.31 pwsh
+ 2661 ttys002    0:27.98 pwsh
+ 2669 ttys003    0:27.37 pwsh
+ 2674 ttys004    0:27.75 pwsh
+ 2676 ttys005    0:27.57 pwsh
+94197 ttys006    1:07.57 pwsh
+94200 ttys007    0:05.13 pwsh

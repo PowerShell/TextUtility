@@ -3,32 +3,29 @@
 
 Describe 'Compare-Test tests' {
     BeforeAll {
-        $leftText = @"
-This is some
-example text.
-"@
-        $rightText = @"
-  This is other
-example text used!
-"@
+        $currentOutputRendering = $PSStyle.OutputRendering
+        $PSStyle.OutputRendering = 'Ansi'
+        $leftText = @("This is some", "example text.") -join [Environment]::NewLine
+        $rightText = @("  This is other", "example text used!") -join [Environment]::NewLine
+        $expectedInline = @(
+            ""
+            "`e[0;1;32m  `e[0mThis is `e[1;9;31msome`e[0m`e[0;1;32mother`e[0m"
+            "`e[0;1;32m`e[0m`e[1;9;31m`e[0m`e[0;1;32m`e[0mexample text`e[1;9;31m.`e[0m`e[0;1;32m used!`e[0m"
+            "" 
+            "" # we need one extra because join doesn't add a newline at the end
+        ) -join [environment]::NewLine
+        $expectedSideBySide = @(
+            ""
+            "`e[0m1 | `e[0mThis is `e[1;9;31msome`e[0m`e[0m `e[0m | `e[0;1;32m  `e[0mThis is `e[0;1;32mother`e…`e[0m"
+            "`e[0m`e[0m`e[1;9;31m`e[0m`e[0m`e[0m`e[0;1;32m`e[0m`e[0;1;32m`e[0m2 | `e[0mexample text`e[1;9;31m.`e[0m`e[0m | `e[0mexample text`e[0;1;32m…`e[0m"
+            ""
+            ""
+            "" # we need one extra because join doesn't add a newline at the end
+        ) -join [environment]::NewLine
+    }
 
-        $expectedInline = @"
-
-[0;1;32m  [0mThis is [1;9;31msome[0m[0;1;32mother[0m
-example text[1;9;31m.[0m[0;1;32m used![0m
-
-
-"@
-
-        $expectedSideBySide = @"
-
-[0m1 | [0mThis is [1;9;31msome[0m[0m [0m | [0;1;32m  [0mThis is [0;1;32mother…
-[0m2 | [0mexample text[1;9;31m.[0m[0m | [0mexample text[0;1;32m…
-[0m
-
-
-"@
-
+    AfterAll {
+        $PSStyle.OutputRendering = $currentOutputRendering
     }
 
     It 'Compare with no specified view uses inline' {

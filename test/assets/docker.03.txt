@@ -1,0 +1,26 @@
+NAME                                           DESCRIPTION                                                                                            STARS     OFFICIAL   AUTOMATED
+centos/powershell                              PowerShell is a cross-platform (Windows, Linux and OS X) automation and configuration tool/framework   8                    [OK]
+quickbreach/powershell-ntlm                    Read more https://blog.quickbreach.io/ps-remote-from-linux-to-windows/                                 3                    [OK]
+rahuldevdockerservice/powershellscriptrunner   run PowerShell script in docker                                                                        3                    
+tylerl0706/powershell-code-server              Coder.com's code-server, PowerShell, and the PowerShell extension for vscode                           2                    
+pshorg/powershellcommunity                     PowerShell for every system!  Community Images!                                                        2                    
+fxinnovation/powershell                        Alpine Linux based powershell image                                                                    1                    
+demisto/powershell                                                                                                                                    1                    
+scrthq/powershell                              Ubuntu 18.04 containers (pwsh & pwsh-preview) for PowerShell module building and testing.              1                    
+truecharts/powershelluniversal                                                                                                                        0                    
+joeltimothyoh/powershell                        PowerShell on Docker with tools, based on mcr.microsoft.com/powershell. 🐳                             0                    
+mbiregistry/powershell                                                                                                                                0                    
+franciscogamino/powershell72                                                                                                                          0                    
+clowa/powershell-core                          Cross platform docker image of powershell core                                                         0                    
+devtestdemisto/powershell-ubuntu                                                                                                                      0                    
+demisto/powershell-ubuntu                                                                                                                             0                    
+demisto/powershell-core                                                                                                                               0                    
+relaysh/powershell-step-run                    Relay step for running PowerShell script                                                               0                    
+powershellduzero/github_repo                   Listing site for my GitHub Repositories                                                                0                    
+devtestdemisto/powershell                                                                                                                             0                    
+dispatchframework/powershell-base                                                                                                                     0                    
+powershellduzero/api                                                                                                                                  0                    
+centeredge/powershell.git                      Linux image with Powershell and Git available                                                          0                    
+zoilus/powershell                                                                                                                                     0                    
+ephesoft/powershell.git                        Powershell image with Git pre-installed                                                                0                    
+fxinnovation/powershell-build                                                                                                                         0                    
