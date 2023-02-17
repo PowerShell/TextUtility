@@ -118,6 +118,7 @@ function Test-Module {
         Write-Verbose -Verbose "No changes to publish"
     }
     try {
+        $PSVersionTable | Out-String -Stream | Write-Verbose -Verbose
         $pesterInstallations = Get-Module -ListAvailable -Name Pester
         if ($pesterInstallations.Version -notcontains "4.10.1") {
             Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -Scope CurrentUser
