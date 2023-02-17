@@ -29,7 +29,7 @@ stages:
       vmImage: windows-latest
     steps:
     - pwsh: |
-        ./build.ps1 -Clean
+        ./build.ps1 -Clean -Publish
       displayName: Build
     - publish: "out/"
       artifact: out

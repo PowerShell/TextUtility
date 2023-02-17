@@ -4,7 +4,7 @@ parameters:
   jobDisplayName: 'Run test'
 
 jobs:
-  - job: '${{ parameters.jobName }}_netstandard20'
+  - job: '${{ parameters.jobName }}_netstandard21'
     pool:
         vmImage: ${{ parameters.vmImageName }}
     displayName: ${{ parameters.jobDisplayName }} - Test
@@ -14,6 +14,5 @@ jobs:
         artifactName: out
         targetPath: '$(Build.SourcesDirectory)/out'
     - pwsh: |
-        Import-Module ./out/Microsoft.PowerShell.TextUtility
-        Invoke-Pester -Path ./test -OutputFormat NUnitXml -EnableExit
+        ./build -Test
     condition: succeeded()
