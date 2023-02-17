@@ -114,8 +114,15 @@ function Test-Module {
     if (Test-ShouldPublish) {
        Publish-Assembly
     }
+    else {
+        Write-Verbose -Verbose "No changes to publish"
+    }
     try {
-        $command = "Import-Module ${PSScriptRoot}/out/${ModuleName}; Import-Module Pester -Max 4.10.1; Invoke-Pester"
+        $pesterInstallations = Get-Module -ListAvailable -Name Pester
+        if ($pesterInstallations.Version -notcontains "4.10.1") {
+            Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -Scope CurrentUser
+        }
+        $command = "Import-Module ${PSScriptRoot}/out/${ModuleName}; Import-Module Pester -Max 4.10.1; Invoke-Pester -OutputFormat NUnitXml -EnableExit -OutputFile ../Microsoft.PowerShell.TextUtility.xml"
         Push-Location $tstRoot
         pwsh -noprofile -command $command
     }
