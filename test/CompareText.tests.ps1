@@ -18,9 +18,11 @@ Describe 'Compare-Test tests' {
         $expectedSideBySide = @(
             ""
             "`e[0m1 | `e[0mThis is `e[1;9;31msome`e[0m`e[0m `e[0m | `e[0;1;32m  `e[0mThis is `e[0;1;32mother`e…`e[0m"
+            # this what was observed on 7.3.0
             # "`e[0m`e[0m`e[1;9;31m`e[0m`e[0m`e[0m`e[0;1;32m`e[0m`e[0;1;32m`e[0m2 | `e[0mexample text`e[1;9;31m.`e[0m`e[0m | `e[0mexample text`e[0;1;32m…`e[0m"
-            "`e[0m2 | `e[0mexample text`e[1;9;31m.`e[0m`e[0m | `e[0mexample text`e[0;1;32m…`e[0m"
-            ""
+            # this what was observed on 7.2.9
+            "`e[0m2 | `e[0mexample text`e[1;9;31m.`e[0m`e[0m | `e[0mexample text`e[0;1;32m…"
+            "`e[0m"
             ""
             "" # we need one extra because join doesn't add a newline at the end
         ) -join [environment]::NewLine
