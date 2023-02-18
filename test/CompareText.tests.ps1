@@ -30,21 +30,21 @@ Describe 'Compare-Test tests' {
 
     It 'Compare with no specified view uses inline' {
         $out = Compare-Text -LeftText $leftText -RightText $rightText | Out-String
-        $out | Should -BeExactly $expectedInline
+        $out | Should -BeExactly $expectedInline -Because "$($out.Replace(""`e"",""``e"")) -ne $($expectedInline.Replace(""`e"",""``e"")))"
     }
 
     It 'Compare with no specified view uses inline and positional parameters' {
         $out = Compare-Text $leftText $rightText | Out-String
-        $out | Should -BeExactly $expectedInline
+        $out | Should -BeExactly $expectedInline -Because "$($out.Replace(""`e"",""``e"")) -ne $($expectedInline.Replace(""`e"",""``e"")))"
     }
 
     It 'Compare with inline works' {
         $out = Compare-Text $leftText $rightText -View Inline | Out-String
-        $out | Should -BeExactly $expectedInline
+        $out | Should -BeExactly $expectedInline -Because "$($out.Replace(""`e"",""``e"")) -ne $($expectedInline.Replace(""`e"",""``e"")))"
     }
 
     It 'Compare with sideybyside works' {
         $out = Compare-Text $leftText $rightText -View SideBySide | Out-String
-        $out | Should -BeExactly $expectedSideBySide
+        $out | Should -BeExactly $expectedSideBySide -Because "$($out.Replace(""`e"",""``e"")) -ne $($expectedSideBySide.Replace(""`e"",""``e"")))"
     }
 }
