@@ -5,7 +5,7 @@
 param (
     [Parameter()]
     [string]
-    $Configuration = "Release",
+    $Configuration = "Debug",
 
     [Parameter()]
     [switch]$Publish,
@@ -94,8 +94,14 @@ function Get-LatestPublishTime {
     ($null -eq $latestFile) ? ([datetime]0) : $latestFile.LastWriteTime
 }
 
+function Get-TargetFramework {
+    [xml]$x = Get-Content "${codeRoot}/${ModuleName}.csproj"
+    $x.Project.PropertyGroup.TargetFramework
+}
+
 function Get-LatestBuildTime {
-    $dllLocation = "${codeRoot}/bin/${Configuration}/netstandard2.1/${ModuleName}.dll"
+    $targetFramework = Get-TargetFramework
+    $dllLocation = "${codeRoot}/bin/${Configuration}/${targetFramework}/${ModuleName}.dll"
     $latestFile = Get-LatestFile "${dllLocation}"
     ($null -eq $latestFile) ? ([datetime]0) : $latestFile.LastWriteTime
 }
@@ -138,8 +144,10 @@ function Publish-Assembly {
         if (-not (test-path $pubRoot)) {
             $null = New-Item -ItemType Directory -Force -Path $pubRoot
         }
+        $targetFramework = Get-TargetFramework
+
         # this needs to be the list of assemblies
-        Copy-Item "${codeRoot}/bin/${Configuration}/netstandard2.1/${ModuleName}.dll" $pubRoot -Force
+        Copy-Item "${codeRoot}/bin/${Configuration}/${targetFramework}/${ModuleName}.dll" $pubRoot -Force
         # module manifest and formatting
         Copy-Item "${SrcRoot}/dictionary.txt" $pubRoot -Force
         Copy-Item "${SrcRoot}/${ModuleName}.psd1" $pubRoot -Force
