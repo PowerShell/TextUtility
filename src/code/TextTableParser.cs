@@ -436,7 +436,11 @@ namespace TextTableParser
         {
             int maximumLength = GetMaxLength(lines);
             int[] SpaceArray = new int[maximumLength];
-            Array.Fill(SpaceArray, 0);
+            for(int i = 0; i < maximumLength; i++)
+            {
+                SpaceArray[i] = 0;
+            }
+
             foreach(string line in lines)
             {
                 for(int i = 0; i < line.Length; i++)
