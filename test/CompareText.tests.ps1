@@ -46,9 +46,31 @@ Describe 'Compare-Text tests' {
         $out | Should -Be $expectedInline
     }
 
-    It 'Compare with sideybyside works' {
-        Set-ItResult -Pending -Because "SideBySide tests are not consistent between PS Versions."
+    It 'Compare with sidebyside works' {
+        Set-ItResult -Pending -Because "https://github.com/PowerShell/TextUtility/issues/30"
         $out = Compare-Text $leftText $rightText -View SideBySide | Out-String -Stream | Foreach-Object {"$_".Replace("`e","``e").Replace($sideBySideResetText, "")}
         $out | Should -Be $expectedSideBySide
+    }
+
+
+    Context "PlainText comparison" {
+        BeforeAll {
+            $currentRendering = $PSStyle.OutputRendering
+            $PSStyle.OutputRendering = 'PlainText'
+        }
+
+        AfterAll {
+            $PSStyle.OutputRendering = $currentRendering
+        }
+
+        It "Default view should have no escape characters" {
+            (Compare-Text $leftText $rightText | Out-String -Stream) | Should -Not -Match "`e"
+        }
+
+        It "SideBySide view should have no escape characters" {
+            Set-ItResult -Pending -Because "https://github.com/PowerShell/TextUtility/issues/30"
+            (Compare-Text $leftText $rightText -View SideBySide | Out-String -Stream) | Should -Not -Match "`e"
+        }
+
     }
 }
