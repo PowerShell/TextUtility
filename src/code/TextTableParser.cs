@@ -1,11 +1,11 @@
-﻿// using System.Reflection.Metadata;
-using System.Diagnostics;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Management.Automation;
 using System.Text.Json;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace TextTableParser
 {
@@ -39,17 +39,17 @@ namespace TextTableParser
     }
 
     [Cmdlet("Convert","TextTable")]
-    public class Class1 : PSCmdlet
+    public class ConvertTextTableCommand : PSCmdlet
     {
         [Parameter()]
         public int MaximumWidth { get; set; } = 200;
 
         [Parameter()]
-        public int WindowSize { get; set; } = 0; // 0 is all
+        public int AnalyzeRowCount { get; set; } = 0; // 0 is all
 
         [Parameter(ValueFromPipeline=true,Mandatory=true,Position=0)]
         [AllowEmptyString()]
-        public string[]Line { get; set; }
+        public string[] Line { get; set; }
 
         [Parameter()]
         public int Skip { get; set; } = 0;
@@ -58,7 +58,7 @@ namespace TextTableParser
         public SwitchParameter NoHeader { get; set; }
 
         [Parameter()]
-        public SwitchParameter AsPsObject { get; set; }
+        public SwitchParameter AsJson { get; set; }
 
         [Parameter()]
         public int[] ColumnWidth { get; set; }
@@ -110,7 +110,7 @@ namespace TextTableParser
                     Lines.Add(_line);
                 }
 
-                if (WindowSize == 0)
+                if (AnalyzeRowCount == 0)
                 {
                     continue;
                 }
@@ -125,7 +125,7 @@ namespace TextTableParser
                 if (Lines.Count == 0) { continue; }
                 // We've collected enough lines to analyze
                 // analyze what we have and then emit them, set the analyzed flag so we will just emit from now on.
-                if (! Analyzed && Lines.Count > WindowSize)
+                if (! Analyzed && Lines.Count > AnalyzeRowCount)
                 {
                     AnalyzeLines(Lines);
                     Analyzed = true;
@@ -156,15 +156,15 @@ namespace TextTableParser
         {
             if (ColumnInfoList != null && columnHeaders != null)
             {
-                if (AsPsObject)
-                {
-                    WriteObject(GetPsObject(ColumnInfoList, line, columnHeaders));
-                }
-                else
+                if (AsJson)
                 {
                     var jsonOptions = new JsonSerializerOptions();
                     jsonOptions.MaxDepth = 1;
                     WriteObject(GetJson(ColumnInfoList, line, columnHeaders));
+                }
+                else
+                {
+                    WriteObject(GetPsObject(ColumnInfoList, line, columnHeaders));
                 }
             }
             else
@@ -207,63 +207,6 @@ namespace TextTableParser
                 Lines.RemoveAt(HeaderLine);
             }
         }
-
-        /*
-        protected override void EndProcessing()
-        {
-            if ( Skip > 0 )
-            {
-                Lines.RemoveRange(0, Skip);
-            }
-
-            int[]SpaceArray = AnalyzeColumns(Lines);
-            string spaceRepresentation = GetSpaceRepresentation(Lines.Count, SpaceArray);
-            
-            List<ColumnInfo> ColumnInfoList;
-            if (ColumnWidth != null)
-            {
-                ColumnInfoList = GetColumnList(ColumnWidth);
-            }
-            else
-            {
-                ColumnInfoList = GetColumnList(Lines.Count, SpaceArray);
-            }
-
-            string[]columnHeaders;
-            if (NoHeader)
-            {
-                columnHeaders = new string[ColumnInfoList.Count];
-                for(int i = 0; i < ColumnInfoList.Count; i++)
-                {
-                    columnHeaders[i] = string.Format("Column_{0:00}", i+1);
-                }
-            }
-            else
-            {
-                columnHeaders = GetHeaderColumns(ColumnInfoList, Lines[HeaderLine]);
-            }
-
-            // WriteObject(ColumnInfoList);
-            // WriteObject(columnHeaders);
-
-            WriteDebug(string.Format("SpaceArrayLength: {0}", SpaceArray.Length));
-            WriteDebug(spaceRepresentation.TrimEnd());
-            
-            for(int i = HeaderLine+1; i < Lines.Count; i++)
-            {
-                if (AsPsObject)
-                {
-                    WriteObject(GetPsObject(ColumnInfoList, Lines[i], columnHeaders));
-                }
-                else
-                {
-                    WriteObject(GetRow(ColumnInfoList, Lines[i], columnHeaders));
-                }
-
-            }
-
-        }
-        */
 
         private string GetSpaceRepresentation(int count, int[] spaceArray)
         {
@@ -310,8 +253,6 @@ namespace TextTableParser
             {
                 if (data[j] is string)
                 {
-                    // TODO: json encode the string
-                    //dataWithHeader[j] = string.Format("\"{0}\": \"{1}\"", columnHeaders[j], data[j].Replace("\"", "\\\""));
                     dataWithHeader[j] = string.Format("\"{0}\": \"{1}\"", columnHeaders[j], JsonEncodedText.Encode(data[j]));
                 }
                 else
@@ -474,7 +415,7 @@ namespace TextTableParser
             return ColumnInfoList;
         }
 
-        // TODO: still not right
+        // Get the column list from the space array.
         private List<ColumnInfo> GetColumnList(int count, int[]SpaceArray)
         {
             List<ColumnInfo> ColumnInfoList = new List<ColumnInfo>();
@@ -489,21 +430,24 @@ namespace TextTableParser
                     ColumnInfoList[ColumnInfoList.Count - 1].Length++;
                     i++;
                 }
+
                 // chew up the non spaces or end of line
                 while(i < SpaceArray.Length && SpaceArray[i] != count)
                 {
                     ColumnInfoList[ColumnInfoList.Count - 1].Length++;
                     i++;
                 }
+
                 int totalLength = ColumnInfoList[ColumnInfoList.Count-1].Length + ColumnInfoList[ColumnInfoList.Count-1].Start;
                 if (totalLength >= SpaceArray.Length)
                 {
                     ColumnInfoList[ColumnInfoList.Count - 1].Length = -1;
                 }
+
                 i--;
             }
+
             return ColumnInfoList;
         }
     }
 }
-

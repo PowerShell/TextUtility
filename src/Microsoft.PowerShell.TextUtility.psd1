@@ -19,8 +19,8 @@
         PSData = @{
             LicenseUri = 'https://github.com/PowerShell/TextUtility/blob/main/LICENSE'
             ProjectUri = 'https://github.com/PowerShell/TextUtility'
-            ReleaseNotes = 'Initial release'
-            Prerelease = 'Preview2'
+            ReleaseNotes = 'Second pre-release'
+            Prerelease = 'Preview'
         }
     }
 

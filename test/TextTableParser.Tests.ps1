@@ -131,25 +131,19 @@ Describe "Test text table parser" {
                     @{ ROW = 4;  "Property_01" = "james"; "Property_02" = "ttys002"; "Property_03" = "Oct"; "Property_04" = "5"; "Property_05" = "16:36"; "Property_06" = "."; "Property_07" = "90609`tterm=0 exit=0" },
                     @{ ROW = 5;  "Property_01" = "james"; "Property_02" = "ttys006"; "Property_03" = "Oct"; "Property_04" = "11"; "Property_05" = "15:41"; "Property_06" = "."; "Property_07" = "25351`tterm=0 exit=0" }
         }
-        #,
-        #@{
-        #    FileName = "who.02.txt"
-        #    convertArgs = @{ }
-        #    Rows = 3
-        #    Results = @{Row = 0; Property_1 = "A";Property_2 = " C:\windows\system32\mmgaserver.exe"},
-        #        @{Row = 0; Property_1 = "A";Property_2 = " C:\windows\system32\mmgaserver.exe"}
-        #}
 
-        #$testCases = Get-ChildItem -File -Path (Join-Path $PSScriptRoot assets) |
-        #    Foreach-Object { @{}{ Path = $_.FullName; FileName = $_.Name } }
     }
 
     Context "Test JSON output" {
+
         It "Should create proper json from '<FileName>' " -testCases $testCases {
             param ($FileName, $convertArgs, $rows, $Results)
             $Path = Join-Path $PSScriptRoot assets $FileName
-            { Get-Content $Path | Convert-TextTable @convertArgs | ConvertFrom-Json -ErrorAction Stop } | Should -Not -Throw
-            $result = Get-Content $Path | Convert-TextTable @convertArgs | ConvertFrom-Json -ErrorAction Ignore
+            # do not alter convertArgs directly as it is a reference rather than a copy
+            $localArgs = $convertArgs.Clone()
+            $localArgs['AsJson'] = $true
+            { Get-Content $Path | Convert-TextTable @localArgs | ConvertFrom-Json -ErrorAction Stop } | Should -Not -Throw
+            $result = Get-Content $Path | Convert-TextTable @localArgs | ConvertFrom-Json -ErrorAction Ignore
             $result | Should -Not -BeNullOrEmpty
             $result.Count | Should -Be $Rows
             foreach ( $r in $results ) {
@@ -165,7 +159,6 @@ Describe "Test text table parser" {
         It "Should create proper psobject from '<FileName>' " -testCases $testCases {
             param ($FileName, $convertArgs, $rows, $Results )
             $Path = Join-Path $PSScriptRoot assets $FileName
-            $convertArgs['AsPsObject'] = $true
             $result = Get-Content $Path | Convert-TextTable @convertArgs
             $result | Should -BeOfType System.Management.Automation.PSObject
             $result.Count | Should -Be $Rows
@@ -188,7 +181,7 @@ Describe "Test text table parser" {
                 @{ Name = "Property_05"; Value = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789" }
                 )
             $testFile = Join-Path $PSScriptRoot assets "columns.01.txt"
-            $result = Get-Content $testFile | Convert-TextTable -ColumnWidth 0,5,13,23,40 -noheader -as
+            $result = Get-Content $testFile | Convert-TextTable -ColumnWidth 0,5,13,23,40 -noheader
             $line = 0
             $testCases = $result.ForEach({@{Result = $_; Line = $line++}})
         }
