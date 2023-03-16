@@ -11,7 +11,7 @@ Describe "Test text table parser" {
         @{
             FileName = "df.01.txt"
             convertArgs = @{}
-            Rows = 12
+            Rows = 10
             Results = @{ Row = 0; "Filesystem" = "/dev/disk4s1s1"; "512-blocks" = "3907805752"; "Used" = "17463888"; "Available" = "1387159800"; "Capacity" = "2%"; "iused" = "349475"; "ifree" = "4291443272"; "%iused" = "0%"; "Mounted_on" = "/" },
                 @{ Row = 1; "Filesystem" = "devfs"; "512-blocks" = "427"; "Used" = "427"; "Available" = "0"; "Capacity" = "100%"; "iused" = "739"; "ifree" = "0"; "%iused" = "100%"; "Mounted_on" = "/dev" }
         },

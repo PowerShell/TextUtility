@@ -9,5 +9,3 @@ map auto_home                                                        0          
 /dev/disk5s1                                                7812714496  3045995928  4765770992    39%    2347862 23828854960    0%   /Volumes/Sabrent
 /dev/disk8s1                                                 976735232   555696128   421039104    57%    2170688     1644684   57%   /Volumes/Samsung500
 /dev/disk7s2                                                3906619488  3649692040   256341328    94%    3760967  1281706640    0%   /Volumes/TOSHIBA EXT
-com.apple.TimeMachine.2023-02-15-072700.local@/dev/disk4s2  3907805752  2492132376  1387159800    65%    5088066  6935799000    0%   /Volumes/com.apple.TimeMachine.localsnapshots/Backups.backupdb/JamesiMac20/2023-02-15-072700/Macintosh HD - Data
-com.apple.TimeMachine.2023-02-15-052637.local@/dev/disk4s2  3907805752  2492264944  1387159800    65%    5085922  6935799000    0%   /Volumes/com.apple.TimeMachine.localsnapshots/Backups.backupdb/JamesiMac20/2023-02-15-052637/Macintosh HD - Data
