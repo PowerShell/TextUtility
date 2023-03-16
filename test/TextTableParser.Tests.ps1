@@ -171,7 +171,7 @@ Describe "Test text table parser" {
         }
     }
 
-    Context "Column width use" {
+    Context "Column offset use" {
         BeforeAll {
             $expectedResult = @(
                 @{ Name = "Property_01"; Value = "S1234" }
@@ -181,12 +181,12 @@ Describe "Test text table parser" {
                 @{ Name = "Property_05"; Value = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789" }
                 )
             $testFile = Join-Path $PSScriptRoot assets "columns.01.txt"
-            $result = Get-Content $testFile | Convert-TextTable -ColumnWidth 0,5,13,23,40 -noheader
+            $result = Get-Content $testFile | Convert-TextTable -ColumnOffset 0,5,13,23,40 -noheader
             $line = 0
             $testCases = $result.ForEach({@{Result = $_; Line = $line++}})
         }
 
-        It "Specifying column width breaks string properly for Line: '<Line>'" -TestCases $testCases {
+        It "Specifying column offset breaks string properly for Line: '<Line>'" -TestCases $testCases {
             param ( $Result, $Line )
             foreach ($expected in $expectedResult) {
                 $Result.$($expected.Name) | Should -Be $expected.Value

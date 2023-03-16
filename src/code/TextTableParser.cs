@@ -61,7 +61,7 @@ namespace TextTableParser
         public SwitchParameter AsJson { get; set; }
 
         [Parameter()]
-        public int[] ColumnWidth { get; set; }
+        public int[] ColumnOffset { get; set; }
 
         [Parameter()]
         public SwitchParameter Convert { get; set; }
@@ -184,9 +184,9 @@ namespace TextTableParser
             }
             SpaceArray = AnalyzeColumns(Lines);
             spaceRepresentation = GetSpaceRepresentation(Lines.Count, SpaceArray);
-            if (ColumnWidth != null)
+            if (ColumnOffset != null)
             {
-                ColumnInfoList = GetColumnList(ColumnWidth);
+                ColumnInfoList = GetColumnList(ColumnOffset);
             }
             else
             {
