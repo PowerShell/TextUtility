@@ -48,6 +48,7 @@ stages:
         Set-Location "$(Build.SourcesDirectory)"
         ./build.ps1 -Clean
         Get-ChildItem -Recurse -File -Name | Write-Verbose -Verbose
+
       displayname: Execute Build
 
     - pwsh: |
