@@ -49,7 +49,7 @@ stages:
         ./build.ps1 -Clean
         Get-ChildItem -Recurse -File -Name | Write-Verbose -Verbose
 
-      displayname: Execute Build
+      displayName: Execute Build
 
     - pwsh: |
         $signSrcPath = "$(Build.SourcesDirectory)/out"
