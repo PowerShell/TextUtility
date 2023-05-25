@@ -2,6 +2,7 @@
 bin/
 obj/
 out/
+*.nupkg
 project.lock.json
 .DS_Store
 

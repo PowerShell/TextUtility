@@ -1,16 +1,13 @@
+# release build
 name: TextUtility-Release-$(Date:yyyyMMdd)$(Rev:.rr)
+trigger: none
+
+pr: none
 
 variables:
-  # Don't download unneeded packages
-  - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
-    value: 'true'
-  # Improve performance by not sending telemetry
-  - name: DOTNET_CLI_TELEMETRY_OPTOUT
-    value: 'true'
-  - name: POWERSHELL_TELEMETRY_OPTOUT
-    value: 1
-
-trigger: none
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  POWERSHELL_TELEMETRY_OPTOUT: 1
 
 resources:
   repositories:
@@ -23,40 +20,66 @@ resources:
 stages:
 - stage: BuildAndSign
   displayName: Build and Sign
+  pool:
+    name: PowerShell1ES
+    demands:
+    - ImageOverride -equals PSMMS2019-Secure
   jobs:
   - job: 'BuildAndSign'
+    displayName: Build and Sign
     variables:
     - group: ESRP
-    displayName: Build and Sign
-    pool:
-      name: PowerShell1ES
-      demands:
-      - ImageOverride -equals PSMMS2019-Secure
     steps:
+    - checkout: self
+
     - task: UseDotNet@2
       displayName: 'Use .NET Core sdk'
       inputs:
         packageType: sdk
         includePreviewVersions: true
         version: 6.x
-    - powershell: |
+
+    - pwsh: |
         Get-ChildItem -Path env:
       displayName: Capture environment
       condition: succeededOrFailed()
+
     - pwsh: |
-        # build agents get reused so we make sure to remove the old archive
-        Remove-Item -Path $(Build.SourcesDirectory)/SignedZip -Recurse -Force -ErrorAction Ignore
-        Remove-Item -Path $(Build.SourcesDirectory)/out -Recurse -Force -ErrorAction Ignore
-        Remove-Item -Path $(Build.SourcesDirectory)/signed -Recurse -Force -ErrorAction Ignore
-        .\build.ps1 -Clean
-        # Remove-Item .\out\*.pdb
+        Set-Location "$(Build.SourcesDirectory)"
+        ./build.ps1 -Clean
+        Get-ChildItem -Recurse -File -Name | Write-Verbose -Verbose
+      displayname: Execute Build
+
+    - pwsh: |
+        $signSrcPath = "$(Build.SourcesDirectory)/out"
+        # Set signing src path variable 
+        $vstsCommandString = "vso[task.setvariable variable=signSrcPath]${signSrcPath}"
+        Write-Host ("sending " + $vstsCommandString)
+        Write-Host "##$vstsCommandString"
+
+        $signOutPath = "$(Build.SourcesDirectory)/signed"
+        $null = New-Item -ItemType Directory -Path $signOutPath
+        # Set signing out path variable
+        $vstsCommandString = "vso[task.setvariable variable=signOutPath]${signOutPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+
+        # Set path variable for guardian codesign validation
+        $vstsCommandString = "vso[task.setvariable variable=GDN_CODESIGN_TARGETDIRECTORY]${signOutPath}"
+        Write-Host "sending " + $vstsCommandString
+        Write-Host "##$vstsCommandString"
+
         $packageVersion = (Import-PowerShellDataFile $(Build.SourcesDirectory)/out/Microsoft.PowerShell.TextUtility/Microsoft.PowerShell.TextUtility.psd1).ModuleVersion
         $vstsCommandString = "vso[task.setvariable variable=PackageVersion]$packageVersion"
         Write-Host ("sending " + $vstsCommandString)
         Write-Host "##$vstsCommandString"
-      displayName: Build
+
+      displayName: Setup variables for signing
+
     - publish: "out/"
       artifact: out
+
+    - checkout: ComplianceRepo
 
     - template: EsrpSign.yml@ComplianceRepo
       parameters:
@@ -65,7 +88,7 @@ stages:
         # the location to put the signed output
         signOutputPath: $(Build.SourcesDirectory)/signed/Microsoft.PowerShell.TextUtility
         # the certificate ID to use
-        certificateId: "CP-460906"
+        certificateId: "CP-230012"
         # The file pattern to use
         # If not using minimatch: comma separated, with * supported
         # If using minimatch: newline separated, with !, **, and * supported.
@@ -130,6 +153,6 @@ stages:
         optionsRulesDBPath: ''
         optionsFTPath: ''
         # tsa-upload
-        codeBaseName: 'TextUtility_20201120'
+        codeBaseName: 'textutility_202305'
         # selections
         APIScan: false # set to false when not using Windows APIs.
