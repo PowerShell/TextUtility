@@ -78,8 +78,10 @@ stages:
 
       displayName: Setup variables for signing
 
-    - publish: "out/"
+    - publish: "$(Build.SourcesDirectory/TextUtility/out/"
       artifact: out
+
+      displayName: Publish unsigned module files
 
     - checkout: ComplianceRepo
 
@@ -95,7 +97,7 @@ stages:
         # If not using minimatch: comma separated, with * supported
         # If using minimatch: newline separated, with !, **, and * supported.
         # See link in the useMinimatch comments.
-        pattern: 'Microsoft.PowerShell.*.dll,Microsoft.PowerShell.*.psd1,Microsoft.PowerShell.*.psm1'
+        pattern: 'Microsoft.PowerShell.*.dll,Microsoft.PowerShell.*.psd1,Microsoft.PowerShell.*.psm1, Microsoft.PowerShell.*.format.ps1xml'
         # decides if the task should use minimatch for the pattern matching.
         # https://github.com/isaacs/minimatch#features
         useMinimatch: false
