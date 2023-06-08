@@ -78,7 +78,7 @@ stages:
 
       displayName: Setup variables for signing
 
-    - publish: "$(Build.SourcesDirectory/TextUtility/out/"
+    - publish: "$(Build.SourcesDirectory)/TextUtility/out/"
       artifact: out
 
       displayName: Publish unsigned module files
