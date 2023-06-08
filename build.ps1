@@ -1,9 +1,9 @@
 ## Copyright (c) Microsoft Corporation.
 ## Licensed under the MIT License.
 
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName="build")]
 param (
-    [Parameter()]
+    [Parameter(ParameterSetName="build")]
     [string]
     $Configuration = "Debug",
 
@@ -14,6 +14,10 @@ param (
     [Parameter(ParameterSetName="package")]
     [switch]
     $signed,
+
+    [Parameter(ParameterSetName="test")]
+    [switch]
+    $test,
 
     [Parameter()]
     [switch]
@@ -86,6 +90,20 @@ try {
     }
 
     dotnet publish --output $outPath --configuration $Configuration
+
+    if ($Test) {
+        $script = [ScriptBlock]::Create("
+            try {
+                Import-Module '${repoRoot}/out/${moduleName}/'
+                Import-Module -Name Pester -Max 4.99
+                Push-Location '${repoRoot}/test'
+                Invoke-Pester
+            }
+            finally {
+                Pop-Location
+            }")
+        pwsh -c $script
+    }
 
     if ($Package) {
         if ($Signed) {
