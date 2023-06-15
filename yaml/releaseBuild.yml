@@ -88,16 +88,16 @@ stages:
     - template: EsrpSign.yml@ComplianceRepo
       parameters:
         # the folder which contains the binaries to sign
-        buildOutputPath: $(Build.SourcesDirectory)/TextUtility/out
+        buildOutputPath: $(signSrcPath)
         # the location to put the signed output
-        signOutputPath: $(Build.SourcesDirectory)/TextUtility/signed/Microsoft.PowerShell.TextUtility
+        signOutputPath: $(signOutPath)
         # the certificate ID to use
         certificateId: "CP-230012"
         # The file pattern to use
         # If not using minimatch: comma separated, with * supported
         # If using minimatch: newline separated, with !, **, and * supported.
         # See link in the useMinimatch comments.
-        pattern: 'Microsoft.PowerShell.*.dll,Microsoft.PowerShell.*.psd1,Microsoft.PowerShell.*.psm1, Microsoft.PowerShell.*.format.ps1xml'
+        pattern: '*.dll,*.psd1,*.psm1,*.ps1xml'
         # decides if the task should use minimatch for the pattern matching.
         # https://github.com/isaacs/minimatch#features
         useMinimatch: false
