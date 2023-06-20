@@ -9,6 +9,10 @@ param (
 
     [Parameter(ParameterSetName="package")]
     [switch]
+    $NoBuild,
+
+    [Parameter(ParameterSetName="package")]
+    [switch]
     $Package,
 
     [Parameter(ParameterSetName="package")]
@@ -21,12 +25,24 @@ param (
 
     [Parameter()]
     [switch]
-    $Clean
+    $Clean,
+
+    [Parameter()]
+    [switch]
+    $GetPackageVersion
+
+)
+
+
+$moduleFileManifest = @(
+    @{ Sign = $true ; File = "Microsoft.PowerShell.TextUtility.format.ps1xml" }
+    @{ Sign = $true ; File = "Microsoft.PowerShell.TextUtility.psd1" }
+    @{ Sign = $false; File = "dictionary.txt" }
+    @{ Sign = $true ; File = "Microsoft.PowerShell.TextUtility.dll" }
 )
 
 $moduleName = "Microsoft.PowerShell.TextUtility"
 $repoRoot = git rev-parse --show-toplevel
-
 
 #
 function Get-ModuleInfo {
@@ -76,10 +92,12 @@ function Export-Module
 
 try {
     Push-Location "$PSScriptRoot/src/code"
+    $script:moduleInfo = Get-ModuleInfo
+    if ($GetPackageVersion) {
+        return $moduleInfo.ModuleVersion
+    }
 
     $outPath = "$PSScriptRoot/out/${moduleName}"
-    $script:moduleInfo = Get-ModuleInfo
-
     if ($Clean) {
         if (Test-Path $outPath) {
             Write-Verbose "Deleting $outPath"
@@ -89,11 +107,12 @@ try {
         dotnet clean
     }
 
-    dotnet publish --output $outPath --configuration $Configuration
+    if (-not $NoBuild) {
+        dotnet publish --output $outPath --configuration $Configuration
+    }
 
     if ($Test) {
-        $script = [ScriptBlock]::Create("
-            try {
+        $script = [ScriptBlock]::Create("try {
                 Import-Module '${repoRoot}/out/${moduleName}/'
                 Import-Module -Name Pester -Max 4.99
                 Push-Location '${repoRoot}/test'
@@ -112,6 +131,11 @@ try {
         else {
             $pkgBase = "${PSScriptRoot}/out/${moduleName}"
         }
+
+        if (-not (Test-Path $pkgBase)) {
+            throw "Directory '$pkgBase' does not exist"
+        }
+
         Export-Module -packageRoot $pkgBase
     }
 }

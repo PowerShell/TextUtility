@@ -47,7 +47,7 @@ stages:
     - pwsh: |
         Set-Location "$(Build.SourcesDirectory)/TextUtility"
         Get-ChildItem -Recurse -File -Name | Write-Verbose -Verbose
-        ./build.ps1 -Clean
+        ./build.ps1
         Get-ChildItem -Recurse -File -Name | Write-Verbose -Verbose
 
       displayName: Execute Build
@@ -71,7 +71,7 @@ stages:
         Write-Host "sending " + $vstsCommandString
         Write-Host "##$vstsCommandString"
 
-        $packageVersion = (Import-PowerShellDataFile $(Build.SourcesDirectory)/TextUtility/out/Microsoft.PowerShell.TextUtility/Microsoft.PowerShell.TextUtility.psd1).ModuleVersion
+        $packageVersion = ./build.ps1 -GetPackageVersion
         $vstsCommandString = "vso[task.setvariable variable=PackageVersion]$packageVersion"
         Write-Host ("sending " + $vstsCommandString)
         Write-Host "##$vstsCommandString"
@@ -102,12 +102,27 @@ stages:
         # https://github.com/isaacs/minimatch#features
         useMinimatch: false
 
+    # 
+    - pwsh: |
+      $repoRoot = "$(Build.SourcesDirectory)/TextUtility"
+      Copy-Item -Path "${repoRoot}/code/dictionary.txt" "${repoRoot}/signed/Microsoft.PowerShell.TextUtility"
+      displayName: Copy dictionary.txt
+
     - template: Sbom.yml@ComplianceRepo
       parameters:
         BuildDropPath: $(Build.SourcesDirectory)/TextUtility/signed/Microsoft.PowerShell.TextUtility
         Build_Repository_Uri: 'https://github.com/powershell/textutility'
         PackageName: 'Microsoft.PowerShell.TextUtility'
         PackageVersion: $(PackageVersion)
+
+      displayName: Create Sbom
+
+    - pwsh: |
+      set-location $(BuildSources.Directory)/TextUtility
+      set-location $(BuildSources.Directory)/TextUtility
+      ./build.ps1 -Package -Signed -NoBuild
+
+      displayName: Construct Signed Module
 
     - pwsh: |
         New-Item -Path $(Build.SourcesDirectory)/TextUtility/SignedZip -ItemType Directory -ErrorAction Ignore
@@ -124,6 +139,11 @@ stages:
       inputs:
         targetpath: $(Build.SourcesDirectory)/TextUtility/SignedZip
         artifactName: SignedZip
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetpath:
+        artifactName: nupkg
 
 - stage: compliance
   displayName: Compliance
