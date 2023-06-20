@@ -122,6 +122,9 @@ stages:
     - pwsh: |
         set-location $(Build.SourcesDirectory)/TextUtility
         ./build.ps1 -Package -Signed -NoBuild
+        New-Item -Type Directory nupkg
+        Move-Item *.nupkg nupkg
+        Get-ChildItem -Recurse -File -Name | out-string -str | Write-Verbose -Verbose
 
       displayName: Construct Signed Module with SBOM
 
@@ -144,7 +147,7 @@ stages:
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetpath: $(Build.SourcesDirectory)/TextUtility/*.nupkg
+        targetpath: $(Build.SourcesDirectory)/TextUtility/nupkg
         artifactName: nupkg
 
 - stage: compliance
