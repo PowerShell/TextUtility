@@ -104,9 +104,10 @@ stages:
 
     # 
     - pwsh: |
-      $repoRoot = "$(Build.SourcesDirectory)/TextUtility"
-      Copy-Item -Path "${repoRoot}/code/dictionary.txt" "${repoRoot}/signed/Microsoft.PowerShell.TextUtility"
-    displayName: Copy dictionary.txt
+        $repoRoot = "$(Build.SourcesDirectory)/TextUtility"
+        Copy-Item -Path "${repoRoot}/code/dictionary.txt" "${repoRoot}/signed/Microsoft.PowerShell.TextUtility"
+
+      displayName: Copy dictionary.txt
 
     - template: Sbom.yml@ComplianceRepo
       parameters:
@@ -114,19 +115,22 @@ stages:
         Build_Repository_Uri: 'https://github.com/powershell/textutility'
         PackageName: 'Microsoft.PowerShell.TextUtility'
         PackageVersion: $(PackageVersion)
+
       displayName: Create Sbom
 
     - pwsh: |
-      set-location $(BuildSources.Directory)/TextUtility
-      set-location $(BuildSources.Directory)/TextUtility
-      ./build.ps1 -Package -Signed -NoBuild
-    displayName: Construct Signed Module
+        set-location $(BuildSources.Directory)/TextUtility
+        set-location $(BuildSources.Directory)/TextUtility
+        ./build.ps1 -Package -Signed -NoBuild
+
+      displayName: Construct Signed Module
 
     - pwsh: |
-      New-Item -Path $(Build.SourcesDirectory)/TextUtility/SignedZip -ItemType Directory -ErrorAction Ignore
-      Compress-Archive -Path $(Build.SourcesDirectory)/TextUtility/signed/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/TextUtility/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
-    displayName: 'Compress archive'
-    condition: succeededOrFailed()
+        New-Item -Path $(Build.SourcesDirectory)/TextUtility/SignedZip -ItemType Directory -ErrorAction Ignore
+        Compress-Archive -Path $(Build.SourcesDirectory)/TextUtility/signed/Microsoft.PowerShell.TextUtility -DestinationPath $(Build.SourcesDirectory)/TextUtility/SignedZip/Microsoft.PowerShell.TextUtility.zip -Force
+
+      displayName: 'Compress archive'
+      condition: succeededOrFailed()
 
     - task: PublishPipelineArtifact@1
       inputs:
