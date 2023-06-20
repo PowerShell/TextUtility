@@ -115,7 +115,6 @@ stages:
         Build_Repository_Uri: 'https://github.com/powershell/textutility'
         PackageName: 'Microsoft.PowerShell.TextUtility'
         PackageVersion: $(PackageVersion)
-      displayName: Create Sbom
 
     - pwsh: |
         set-location $(BuildSources.Directory)/TextUtility
