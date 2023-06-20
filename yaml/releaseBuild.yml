@@ -53,6 +53,7 @@ stages:
       displayName: Execute Build
 
     - pwsh: |
+        Set-Location "$(Build.SourcesDirectory)/TextUtility"
         $signSrcPath = "$(Build.SourcesDirectory)/TextUtility/out"
         # Set signing src path variable 
         $vstsCommandString = "vso[task.setvariable variable=signSrcPath]${signSrcPath}"
