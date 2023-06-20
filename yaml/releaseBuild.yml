@@ -106,7 +106,9 @@ stages:
     # 
     - pwsh: |
         $repoRoot = "$(Build.SourcesDirectory)/TextUtility"
-        Copy-Item -Path "${repoRoot}/code/dictionary.txt" "${repoRoot}/signed/Microsoft.PowerShell.TextUtility"
+        Set-Location $repoRoot
+        Get-ChildItem -Path ${repoRoot} -File -Recurse | Out-String -Str | Write-Verbose -Verbose
+        Copy-Item -Path "${repoRoot}/src/dictionary.txt" "${repoRoot}/signed/Microsoft.PowerShell.TextUtility"
 
       displayName: Copy dictionary.txt
 
@@ -122,7 +124,7 @@ stages:
         set-location $(BuildSources.Directory)/TextUtility
         ./build.ps1 -Package -Signed -NoBuild
 
-      displayName: Construct Signed Module
+      displayName: Construct Signed Module with SBOM
 
     - pwsh: |
         New-Item -Path $(Build.SourcesDirectory)/TextUtility/SignedZip -ItemType Directory -ErrorAction Ignore
