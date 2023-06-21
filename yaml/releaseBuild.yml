@@ -123,7 +123,7 @@ stages:
         set-location $(Build.SourcesDirectory)/TextUtility
         ./build.ps1 -Package -Signed -NoBuild
         New-Item -Type Directory nupkg
-        Move-Item *.nupkg nupkg
+        Copy-Item *.nupkg nupkg -ErrorAction Ignore -Verbose
         Get-ChildItem -Recurse -File -Name | out-string -str | Write-Verbose -Verbose
 
       displayName: Construct Signed Module with SBOM
