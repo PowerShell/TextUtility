@@ -38,7 +38,7 @@ namespace TextTableParser
         }
     }
 
-    [Cmdlet("Convert","TextTable")]
+    [Cmdlet("ConvertFrom","TextTable")]
     public class ConvertTextTableCommand : PSCmdlet
     {
         [Parameter()]
@@ -64,13 +64,13 @@ namespace TextTableParser
         public int[] ColumnOffset { get; set; }
 
         [Parameter()]
-        public SwitchParameter Convert { get; set; }
+        public SwitchParameter ConvertPropertyValue { get; set; }
 
         [Parameter()]
         public int HeaderLine { get; set; } = 0; // Assume the first line is the header
 
         [Parameter()]
-        public string[] Typename { get; set; }
+        public string[] TypeName { get; set; }
 
         private List<string>Lines = new List<string>();
 
@@ -228,9 +228,9 @@ namespace TextTableParser
         public PSObject GetPsObject(List<ColumnInfo> cInfos, string line, string[] columnHeaders)
         {
             PSObject o = new PSObject();
-            if (Typename != null)
+            if (TypeName != null)
             {
-                foreach (string t in Typename)
+                foreach (string t in TypeName)
                 {
                     o.TypeNames.Insert(0, t);
                 }
@@ -279,8 +279,8 @@ namespace TextTableParser
                     value = line.Substring(cInfos[i].Start, cInfos[i].Length).Trim();
                 }
 
-                // If convert is specified, try to convert to int, int64, decimal, datetime, or timespan.
-                if (! Convert)
+                // If ConvertPropertyValue is specified, try to convert to int, int64, decimal, datetime, or timespan.
+                if (! ConvertPropertyValue)
                 {
                     data[i] = value;
                 }

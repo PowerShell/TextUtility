@@ -1,6 +1,6 @@
 Describe "Test text table parser" {
     BeforeAll {
-        $cmdletName = "Convert-TextTable"
+        $cmdletName = "ConvertFrom-TextTable"
         $testCases = @{
             FileName = "attrib.01.txt"
             convertArgs = @{ NoHeader = $true }
@@ -142,8 +142,8 @@ Describe "Test text table parser" {
             # do not alter convertArgs directly as it is a reference rather than a copy
             $localArgs = $convertArgs.Clone()
             $localArgs['AsJson'] = $true
-            { Get-Content $Path | Convert-TextTable @localArgs | ConvertFrom-Json -ErrorAction Stop } | Should -Not -Throw
-            $result = Get-Content $Path | Convert-TextTable @localArgs | ConvertFrom-Json -ErrorAction Ignore
+            { Get-Content $Path | ConvertFrom-TextTable @localArgs | ConvertFrom-Json -ErrorAction Stop } | Should -Not -Throw
+            $result = Get-Content $Path | ConvertFrom-TextTable @localArgs | ConvertFrom-Json -ErrorAction Ignore
             $result | Should -Not -BeNullOrEmpty
             $result.Count | Should -Be $Rows
             foreach ( $r in $results ) {
@@ -159,7 +159,7 @@ Describe "Test text table parser" {
         It "Should create proper psobject from '<FileName>' " -testCases $testCases {
             param ($FileName, $convertArgs, $rows, $Results )
             $Path = Join-Path $PSScriptRoot assets $FileName
-            $result = Get-Content $Path | Convert-TextTable @convertArgs
+            $result = Get-Content $Path | ConvertFrom-TextTable @convertArgs
             $result | Should -BeOfType System.Management.Automation.PSObject
             $result.Count | Should -Be $Rows
             foreach ( $r in $results ) {
@@ -181,7 +181,7 @@ Describe "Test text table parser" {
                 @{ Name = "Property_05"; Value = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789" }
                 )
             $testFile = Join-Path $PSScriptRoot assets "columns.01.txt"
-            $result = Get-Content $testFile | Convert-TextTable -ColumnOffset 0,5,13,23,40 -noheader
+            $result = Get-Content $testFile | ConvertFrom-TextTable -ColumnOffset 0,5,13,23,40 -noheader
             $line = 0
             $testCases = $result.ForEach({@{Result = $_; Line = $line++}})
         }
