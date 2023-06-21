@@ -1,0 +1,7 @@
+  PID TTY           TIME CMD
+ 2596 ttys000    1:59.45 /usr/local/bin/pwsh -l
+ 2601 ttys001    0:44.13 /usr/local/bin/pwsh -l
+ 2661 ttys002    0:23.53 /usr/local/bin/pwsh
+ 2669 ttys003    0:23.04 /usr/local/bin/pwsh
+ 2674 ttys004    0:23.32 /usr/local/bin/pwsh
+ 2676 ttys005    0:23.16 /usr/local/bin/pwsh

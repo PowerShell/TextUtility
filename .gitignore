@@ -5,6 +5,6 @@ out/
 *.nupkg
 project.lock.json
 .DS_Store
-
+Microsoft.PowerShell.TextUtility.xml
 # VSCode directories that are not at the repository root
 /**/.vscode/

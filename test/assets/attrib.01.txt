@@ -1,0 +1,12 @@
+A                    C:\windows\system32\mmgaserver.exe
+A                    C:\windows\system32\mobsync.exe
+A                    C:\windows\system32\mountvol.exe
+A                    C:\windows\system32\mpnotify.exe
+                     C:\windows\system32\MpSigStub.exe
+A                    C:\windows\system32\MRINFO.EXE
+A                    C:\windows\system32\MRT-KB890830.exe
+A                    C:\windows\system32\MRT.exe
+A                    C:\windows\system32\MSchedExe.exe
+A                    C:\windows\system32\msconfig.exe
+A                    C:\windows\system32\msdt.exe
+A                    C:\windows\system32\msdtc.exe

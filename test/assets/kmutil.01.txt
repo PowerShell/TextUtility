@@ -1,0 +1,31 @@
+Index Refs Address            Size       Wired      Name (Version) UUID <Linked Against>
+    1  161 0                  0          0          com.apple.kpi.bsd (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    2   12 0                  0          0          com.apple.kpi.dsep (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    3  206 0                  0          0          com.apple.kpi.iokit (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    4    0 0                  0          0          com.apple.kpi.kasan (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    5    0 0                  0          0          com.apple.kpi.kcov (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    6  212 0                  0          0          com.apple.kpi.libkern (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    7  190 0                  0          0          com.apple.kpi.mach (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    8  128 0                  0          0          com.apple.kpi.private (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+    9  124 0                  0          0          com.apple.kpi.unsupported (22.3.0) 10E5D254-4A37-3A2A-B560-E6956A093ADE <>
+   10   16 0xffffff800367b000 0x78ff0    0x78ff0    com.apple.kec.corecrypto (12.0) CADEE2DB-DF62-3630-A9F9-BC8B75D43579 <9 8 7 6 3 1>
+   11    0 0xffffff8001812000 0x3000     0x3000     com.apple.kec.AppleEncryptedArchive (1) 801B530A-4BDE-3DA7-A4EB-595E19C2183F <10 8 7 6>
+   12    0 0xffffff8001d23000 0x1ffd     0x1ffd     com.apple.kec.Compression (1) AAD85675-9300-3DD1-A6EE-DA2188B031A6 <10 8 7 6>
+  207    0 0xffffff7f95ff2000 0x9ffc     0x9ffc     com.apple.driver.AppleBridgeAudioController (300.10) 747999A0-EEDE-3055-9F27-45AAE351615D <17 9 8 7 6 3 1>
+  208    0 0xffffff7f8d72b000 0x2ffb     0x2ffb     com.apple.kext.AMDRadeonX6000HWServices (4.0.9) 18243619-48C2-3C79-A855-1845FF65D0F1 <147 17 16 9 7 6 3 1>
+  209    0 0xffffff7f80fb5000 0x2ff8     0x2ff8     com.apple.kext.AMDRadeonServiceManager (4.0.9) 3376CF7B-83E6-39D4-BC79-1166F3D023C4 <17 6 3 1>
+  210    0 0xffffff7f8d264000 0x171000   0x171000   com.apple.kext.AMDRadeonX6000 (4.0.9) 32106E48-FADE-38FC-A544-A410B04DE09E <153 147 97 17 9 7 6 3 1>
+  211    0 0xffffff7f900ec000 0x3ab000   0x3ab000   com.apple.kext.AMDRadeonX6200HWLibs (1.0) 5C49C020-89C4-3C65-8241-C24606BB8721 <17 7 6 3 1>
+  212    0 0xffffff7f95fcf000 0x3000     0x3000     com.apple.driver.AppleUpstreamUserClient (3.6.9) D87ECE3E-9289-3365-92B3-447D3CE3CF60 <147 17 16 9 7 6 3 1>
+  213    0 0xffffff8001841000 0xffd      0xffd      com.apple.driver.AppleHIDALSService (1) 3075C57F-90CA-3F66-A7D9-CE089F9B800A <25 6 3>
+  214    0 0xffffff7f965e4000 0x8000     0x8000     com.apple.filesystems.autofs (3.0) CF00080B-43BD-3228-B53D-BE5A3E0DCC84 <188 9 8 7 6 3 2 1>
+  215    0 0xffffff7f95fde000 0x3000     0x3000     com.apple.driver.AudioAUUC (1.70) 405B4B39-337C-3D86-945F-EF423DB76751 <200 147 17 16 9 7 6 3 1>
+  216    1 0xffffff7f96320000 0x6000     0x6000     com.apple.driver.X86PlatformShim (1.0.0) E5997FC7-5A3F-389B-94A3-71E4363D3602 <158 140 18 9 6 3>
+  217    0 0xffffff7f95228000 0x1eff9    0x1eff9    com.apple.driver.AGPM (131) 6E5501C1-EE76-3A48-B256-A706C1654080 <159 152 147 140 17 8 7 6 3 1>
+  218    0 0xffffff7f95e9a000 0x1fff     0x1fff     com.apple.driver.ApplePlatformEnabler (2.7.0d0) EBD0CB5E-069E-31D3-86AE-F50016424C39 <9 7 6 3>
+  219    0 0xffffff800184c000 0x1000     0x1000     com.apple.driver.AppleBluetoothHIDKeyboard (231) 57781374-1C81-3943-8E43-F93A73C4F3D9 <130 126 58 6 3>
+  221    0 0xffffff7f966ed000 0x81ff1    0x81ff1    com.apple.filesystems.smbfs (5.0) A47AE6DA-E8FF-3348-A45F-BC77C4A74D05 <188 10 9 8 7 6 3 1>
+  222    1 0xffffff7f96601000 0xcff7     0xcff7     com.apple.filesystems.exfat (1.4) D13CB989-1F42-3002-865C-9F5ADB1BA635 <9 8 7 6 3 1>
+  223    0 0xffffff7f965d6000 0xbffe     0xbffe     com.apple.nke.asp_tcp (8.3) E4AD657A-2612-3AF4-B82B-504DD0F1DC42 <9 8 7 6 3 1>
+  224    1 0xffffff7f95ebf000 0xc000     0xc000     com.apple.security.SecureRemotePassword (1.0) 3328BC1F-AE4D-33C3-87D0-BA29AE290DB2 <8 7 6 1>
+  225    0 0xffffff7f96589000 0x45ff4    0x45ff4    com.apple.filesystems.afpfs (11.4) 3A234FAA-F76E-3CE3-8C49-53FF3924558E <224 95 9 8 7 6 3 1>

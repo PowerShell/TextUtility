@@ -1,0 +1,48 @@
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+System Idle Process              0 Services                   0          8 K
+System                           4 Services                   0      8,240 K
+Secure System                  104 Services                   0     73,736 K
+Registry                       172 Services                   0    169,772 K
+smss.exe                       800 Services                   0      1,228 K
+csrss.exe                      944 Services                   0      4,984 K
+svchost.exe                   2380 Services                   0      9,032 K
+svchost.exe                   3584 Services                   0      9,668 K
+svchost.exe                   3808 Services                   0      8,132 K
+svchost.exe                   3892 Services                   0      7,812 K
+spoolsv.exe                   4000 Services                   0     26,872 K
+svchost.exe                   3572 Services                   0     13,732 K
+vmms.exe                      2956 Services                   0     84,248 K
+dfsrs.exe                     4360 Services                   0    114,964 K
+ismserv.exe                   4368 Services                   0      4,920 K
+ssh-agent.exe                 4376 Services                   0      3,504 K
+TCPSVCS.EXE                   4384 Services                   0      2,960 K
+TFSJobAgent.exe               4392 Services                   0    118,204 K
+sqlwriter.exe                 4400 Services                   0     21,088 K
+sshd.exe                      4408 Services                   0      5,328 K
+Microsoft.ActiveDirectory     4416 Services                   0     46,780 K
+inetinfo.exe                  4504 Services                   0     30,960 K
+smartscreen.exe               6248 RDP-Tcp#33                 2     29,940 K
+svchost.exe                  10088 Services                   0      9,840 K
+svchost.exe                   9740 Services                   0     19,360 K
+svchost.exe                   2100 Services                   0     10,784 K
+SecurityHealthService.exe     3276 Services                   0     12,824 K
+mmc.exe                       9760 RDP-Tcp#33                 2     62,316 K
+pwsh.exe                      8660 RDP-Tcp#33                 2    112,700 K
+conhost.exe                   8060 RDP-Tcp#33                 2     23,048 K
+WmiPrvSE.exe                  9372 Services                   0     10,928 K
+WmiPrvSE.exe                  8084 Services                   0     43,156 K
+vmconnect.exe                 6352 RDP-Tcp#33                 2    242,068 K
+vmwp.exe                      9444 Services                   0     48,084 K
+powershell.exe               11132 RDP-Tcp#33                 2    177,552 K
+conhost.exe                   2744 RDP-Tcp#33                 2     28,044 K
+powershell.exe                4592 RDP-Tcp#33                 2    127,172 K
+conhost.exe                  11316 RDP-Tcp#33                 2      8,440 K
+svchost.exe                   8104 Services                   0      8,016 K
+MsMpEng.exe                  10232 Services                   0    247,404 K
+NisSrv.exe                   11852 Services                   0     11,500 K
+dllhost.exe                  11552 RDP-Tcp#33                 2     12,572 K
+TrustedInstaller.exe          4652 Services                   0      7,276 K
+TiWorker.exe                  9996 Services                   0      8,992 K
+tasklist.exe                 10660 RDP-Tcp#33                 2      7,976 K
