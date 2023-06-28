@@ -1,0 +1,6 @@
+total 1656
+-rw-r--r--  1 james    2687 Oct 12 16:58 NativeTableParser.deps.json
+-rw-r--r--  1 james   12288 Oct 12 16:58 NativeTableParser.dll
+-rw-r--r--  1 james   14512 Oct 12 16:58 NativeTableParser.pdb
+-rwxr--r--  1 james  354304 Mar  7  2019 System.Management.Automation.dll
+-rwxr--r--  1 james  457864 Aug 19 12:49 System.Text.Json.dll

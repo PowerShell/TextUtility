@@ -1,0 +1,11 @@
+Filesystem                                                  512-blocks        Used   Available Capacity    iused       ifree %iused  Mounted on
+/dev/disk4s1s1                                              3907805752    17463888  1387159800     2%     349475  4291443272    0%   /
+devfs                                                              427         427           0   100%        739           0  100%   /dev
+/dev/disk4s3                                                3907805752     3606904  1387159800     1%       3084  6935799000    0%   /System/Volumes/Preboot
+/dev/disk4s5                                                3907805752          40  1387159800     1%          0  6935799000    0%   /System/Volumes/VM
+/dev/disk4s6                                                3907805752       16864  1387159800     1%         20  6935799000    0%   /System/Volumes/Update
+/dev/disk4s2                                                3907805752  2496758616  1387159800    65%    5089355  6935799000    0%   /System/Volumes/Data
+map auto_home                                                        0           0           0   100%          0           0  100%   /System/Volumes/Data/home
+/dev/disk5s1                                                7812714496  3045995928  4765770992    39%    2347862 23828854960    0%   /Volumes/Sabrent
+/dev/disk8s1                                                 976735232   555696128   421039104    57%    2170688     1644684   57%   /Volumes/Samsung500
+/dev/disk7s2                                                3906619488  3649692040   256341328    94%    3760967  1281706640    0%   /Volumes/TOSHIBA EXT

@@ -1,0 +1,7 @@
+  UID   PID  PPID        F CPU PRI NI       SZ    RSS WCHAN     S             ADDR TTY           TIME CMD
+  501  2596  2587     4006   0  33  0 39662748 167544 -      S+                  0 ttys000    2:01.35 /usr/local/bin/pwsh -l
+  501  2601  2597     4006   0  33  0 39659028 142632 -      S+                  0 ttys001    0:44.13 /usr/local/bin/pwsh -l
+  501  2661  2658     4006   0  33  0 39657836 135988 -      Ss+                 0 ttys002    0:23.54 /usr/local/bin/pwsh
+  501  2669  2658     4006   0  33  0 39658348 135396 -      Ss+                 0 ttys003    0:23.05 /usr/local/bin/pwsh
+  501  2674  2658     4006   0  33  0 39658348 136844 -      Ss+                 0 ttys004    0:23.32 /usr/local/bin/pwsh
+  501  2676  2658     4006   0  33  0 39658344 136596 -      Ss+                 0 ttys005    0:23.17 /usr/local/bin/pwsh

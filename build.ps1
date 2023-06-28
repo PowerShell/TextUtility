@@ -19,6 +19,7 @@ param (
     [switch]
     $signed,
 
+    [Parameter(ParameterSetName="package")]
     [Parameter(ParameterSetName="test")]
     [switch]
     $test,
@@ -43,6 +44,7 @@ $moduleFileManifest = @(
 
 $moduleName = "Microsoft.PowerShell.TextUtility"
 $repoRoot = git rev-parse --show-toplevel
+$testRoot = "${repoRoot}/test"
 
 #
 function Get-ModuleInfo {
@@ -90,6 +92,25 @@ function Export-Module
     }
 }
 
+function Test-Module {
+    try {
+        $PSVersionTable | Out-String -Stream | Write-Verbose -Verbose
+        $pesterInstallations = Get-Module -ListAvailable -Name Pester
+        if ($pesterInstallations.Version -notcontains "4.10.1") {
+            Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -Scope CurrentUser
+            }
+        $importTarget = "Import-Module ${PSScriptRoot}/out/${ModuleName}"
+        $importPester = "Import-Module Pester -Max 4.10.1"
+        $invokePester = "Invoke-Pester -OutputFormat NUnitXml -EnableExit -OutputFile ../Microsoft.PowerShell.TextUtility.xml"
+        $command = "${importTarget}; ${importPester}; ${invokePester}"
+        Push-Location $testRoot
+        pwsh -noprofile -command $command
+    }
+    finally {
+        Pop-Location
+    }
+}
+
 try {
     Push-Location "$PSScriptRoot/src/code"
     $script:moduleInfo = Get-ModuleInfo
@@ -112,6 +133,9 @@ try {
     }
 
     if ($Test) {
+        Test-Module
+
+        <#
         $script = [ScriptBlock]::Create("try {
                 Import-Module '${repoRoot}/out/${moduleName}/'
                 Import-Module -Name Pester -Max 4.99
@@ -122,6 +146,8 @@ try {
                 Pop-Location
             }")
         pwsh -c $script
+        #>
+        return
     }
 
     if ($Package) {

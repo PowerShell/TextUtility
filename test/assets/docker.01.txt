@@ -1,0 +1,9 @@
+REPOSITORY                               TAG                       IMAGE ID       CREATED        SIZE
+docker101tutorial                        latest                    234e26cd95c2   5 weeks ago    28.9MB
+mcr.microsoft.com/powershell             preview-7.3-mariner-2.0   4e9617ada198   5 weeks ago    235MB
+mcr.microsoft.com/powershell             latest                    4bcdf53ee67b   5 weeks ago    339MB
+alpine/git                               latest                    692618a0d74d   6 weeks ago    43.4MB
+mcr.microsoft.com/mssql/server           2022-latest               97a21961f76d   7 weeks ago    1.6GB
+mcr.microsoft.com/powershell/test-deps   ubi-8.4                   02214dbfb621   2 months ago   640MB
+alpine                                   latest                    9c6f07244728   2 months ago   5.54MB
+mcr.microsoft.com/mssql/server           2019-latest               e3afdc6d8e5c   2 months ago   1.47GB

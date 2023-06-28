@@ -1,0 +1,6 @@
+reboot   ~        Sep 14 10:10 00:04 	     1
+james    console  Sep 14 10:11  old  	   283
+james    ttys000  Sep 26 13:12 00:09 	 50821	term=0 exit=0
+james    ttys001  Oct 12 16:58   .   	 73518
+james    ttys002  Oct  5 16:36   .   	 90609	term=0 exit=0
+james    ttys006  Oct 11 15:41   .   	 25351	term=0 exit=0
