@@ -15,3 +15,7 @@ Return a string decoded from base64.
 ## ConvertTo-Base64
 
 Return a base64 encoded representation of a string.
+
+## ConvertFrom-TextTable
+
+This will convert tabular data and convert it to an object.
