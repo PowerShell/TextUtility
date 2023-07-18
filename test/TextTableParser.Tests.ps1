@@ -187,7 +187,7 @@ Describe 'Test text table parser' {
         BeforeAll {
         }
 
-        It "Specifying column offset breaks string properly for Line: '<result> <Line>'" -TestCases $testCases {
+        It "Specifying column offset breaks string properly for Line: '<Line>'" -TestCases $testCases {
             param ( $Result, $Line )
             foreach ($expected in $expectedResult) {
                 $Result.$($expected.Name) | Should -Be $expected.Value
