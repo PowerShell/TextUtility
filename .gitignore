@@ -8,3 +8,5 @@ project.lock.json
 Microsoft.PowerShell.TextUtility.xml
 # VSCode directories that are not at the repository root
 /**/.vscode/
+# VSCode dev container
+.devcontainer
