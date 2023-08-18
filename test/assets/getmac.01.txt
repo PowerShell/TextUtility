@@ -1,0 +1,8 @@
+
+Physical Address    Transport Name                                            
+=================== ==========================================================
+0C-C4-7A-28-C7-12   \Device\Tcpip_{E18CCFE3-A60F-48CB-B223-3F38DED8A124}      
+00-25-90-10-83-F5   \Device\Tcpip_{C16BBA38-CFD1-4FE5-9143-064095F5268F}      
+0C-C4-7A-28-C7-13   \Device\Tcpip_{8234FC65-751E-4B56-AB8A-0758A4C18889}      
+0C-C4-7A-28-C7-12   N/A                                                       
+0C-C4-7A-28-C7-13   Media disconnected                                        

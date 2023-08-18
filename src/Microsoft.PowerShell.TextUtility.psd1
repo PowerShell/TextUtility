@@ -3,7 +3,7 @@
 
 @{
     RootModule = '.\Microsoft.PowerShell.TextUtility.dll'
-    ModuleVersion = '0.1.0'
+    ModuleVersion = '0.5.0'
     CompatiblePSEditions = @('Desktop', 'Core')
     GUID = '5cb64356-cd04-4a18-90a4-fa4072126155'
     Author = 'Microsoft Corporation'
@@ -13,14 +13,13 @@
     PowerShellVersion = '5.1'
     FormatsToProcess = @('Microsoft.PowerShell.TextUtility.format.ps1xml')
     CmdletsToExport = @(
-        'Compare-Text','ConvertFrom-Base64','ConvertTo-Base64'
+        'Compare-Text','ConvertFrom-Base64','ConvertTo-Base64',"ConvertFrom-TextTable"
     )
     PrivateData = @{
         PSData = @{
             LicenseUri = 'https://github.com/PowerShell/TextUtility/blob/main/LICENSE'
             ProjectUri = 'https://github.com/PowerShell/TextUtility'
-            ReleaseNotes = 'Initial release'
-            Prerelease = 'Preview1'
+            ReleaseNotes = 'Second pre-release'
         }
     }
 
