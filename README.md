@@ -19,3 +19,7 @@ Return a base64 encoded representation of a string.
 ## ConvertFrom-TextTable
 
 This will convert tabular data and convert it to an object.
+
+## Get-FileEncoding
+
+This cmdlet returns encoding for a file.
