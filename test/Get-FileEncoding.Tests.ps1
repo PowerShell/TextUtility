@@ -35,18 +35,18 @@ Describe "Get-FileEncoding" -Tags "CI" {
     }
 
     It "Should throw exception if path is not found using -Path" {
-        { Get-FileEncoding -Path nonexistentpath } | Should -Throw -ErrorId 'PathNotFound,Microsoft.PowerShell.Commands.GetFileEncodingCommand'
+        { Get-FileEncoding -Path nonexistentpath } | Should -Throw -ErrorId 'PathNotFound,Microsoft.PowerShell.TextUtility.GetFileEncodingCommand'
     }
 
     It "Should throw exception if path is not found using -LiteralPath" {
-        { Get-FileEncoding -LiteralPath nonexistentpath } | Should -Throw -ErrorId 'PathNotFound,Microsoft.PowerShell.Commands.GetFileEncodingCommand'
+        { Get-FileEncoding -LiteralPath nonexistentpath } | Should -Throw -ErrorId 'PathNotFound,Microsoft.PowerShell.TextUtility.GetFileEncodingCommand'
     }
 
     It "Should throw exception if path is not file system path" {
-        { Get-FileEncoding -Path 'Env:' } | Should -Throw -ErrorId 'OnlySupportsFileSystemPaths,Microsoft.PowerShell.Commands.GetFileEncodingCommand'
+        { Get-FileEncoding -Path 'Env:' } | Should -Throw -ErrorId 'OnlySupportsFileSystemPaths,Microsoft.PowerShell.TextUtility.GetFileEncodingCommand'
     }
 
     It "Should throw exception if multiple paths is specified" {
-        { Get-FileEncoding -Path '*' } | Should -Throw -ErrorId 'MultipleFilesNotSupported,Microsoft.PowerShell.Commands.GetFileEncodingCommand'
+        { Get-FileEncoding -Path '*' } | Should -Throw -ErrorId 'MultipleFilesNotSupported,Microsoft.PowerShell.TextUtility.GetFileEncodingCommand'
     }
 }
