@@ -96,7 +96,7 @@ namespace Microsoft.PowerShell.Commands
 
                     if (!provider.Name.Equals("FileSystem", StringComparison.OrdinalIgnoreCase))
                     {
-                        ReportFileSystemProviderNotUsed(path);
+                        ReportOnlySupportsFileSystemPaths(path);
                     }
 
                     if (filePaths.Count > 1)
@@ -119,7 +119,7 @@ namespace Microsoft.PowerShell.Commands
         /// Throws terminating error for not using file system provider.
         /// </summary>
         /// <param name="path">The path to report.</param>
-        private void ReportFileSystemProviderNotUsed(string path)
+        private void ReportOnlySupportsFileSystemPaths(string path)
         {
             var errorMessage = string.Format(CultureInfo.CurrentCulture, Resources.OnlySupportsFileSystemPaths, path);
             var exception = new ArgumentException(errorMessage);
