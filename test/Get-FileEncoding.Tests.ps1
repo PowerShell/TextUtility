@@ -43,7 +43,7 @@ Describe "Get-FileEncoding" -Tags "CI" {
     }
 
     It "Should throw exception if path is not file system path" {
-        { Get-FileEncoding -Path 'Cert:\CurrentUser\My' } | Should -Throw -ErrorId 'OnlySupportsFileSystemPaths,Microsoft.PowerShell.Commands.GetFileEncodingCommand'
+        { Get-FileEncoding -Path 'Env:' } | Should -Throw -ErrorId 'OnlySupportsFileSystemPaths,Microsoft.PowerShell.Commands.GetFileEncodingCommand'
     }
 
     It "Should throw exception if multiple paths is specified" {
