@@ -8,10 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.PowerShell.TextUtility.Properties {
+namespace Microsoft.PowerShell.TextUtility.Resources
+{
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,67 +23,81 @@ namespace Microsoft.PowerShell.TextUtility.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    internal class PathUtilityStrings
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal PathUtilityStrings()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.PowerShell.TextUtility.Properties.Resources", typeof(Resources).Assembly);
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.PowerShell.TextUtility.resources.PathUtilityStrings", typeof(PathUtilityStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot perform operation because the path resolved to more than one file. This command cannot operate on multiple files..
         /// </summary>
-        internal static string MultipleFilesNotSupported {
-            get {
+        internal static string MultipleFilesNotSupported
+        {
+            get
+            {
                 return ResourceManager.GetString("MultipleFilesNotSupported", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The given path &apos;{0}&apos; is not supported. This command only supports the FileSystem Provider paths..
         /// </summary>
-        internal static string OnlySupportsFileSystemPaths {
-            get {
+        internal static string OnlySupportsFileSystemPaths
+        {
+            get
+            {
                 return ResourceManager.GetString("OnlySupportsFileSystemPaths", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find path &apos;{0}&apos; because it does not exist..
         /// </summary>
-        internal static string PathNotFound {
-            get {
+        internal static string PathNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("PathNotFound", resourceCulture);
             }
         }

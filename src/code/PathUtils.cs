@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
-using Microsoft.PowerShell.TextUtility.Properties;
+using Microsoft.PowerShell.TextUtility.Resources;
 
 namespace Microsoft.PowerShell.TextUtility
 {
@@ -63,7 +63,7 @@ namespace Microsoft.PowerShell.TextUtility
         /// <param name="path">The path to report.</param>
         internal static void ReportOnlySupportsFileSystemPaths(string path, PSCmdlet command)
         {
-            var errorMessage = string.Format(CultureInfo.CurrentCulture, Resources.OnlySupportsFileSystemPaths, path);
+            var errorMessage = string.Format(CultureInfo.CurrentCulture, PathUtilityStrings.OnlySupportsFileSystemPaths, path);
             var exception = new ArgumentException(errorMessage);
             var errorRecord = new ErrorRecord(exception, "OnlySupportsFileSystemPaths", ErrorCategory.InvalidArgument, path);
             command.ThrowTerminatingError(errorRecord);
@@ -75,7 +75,7 @@ namespace Microsoft.PowerShell.TextUtility
         /// <param name="path">The path to report.</param>
         internal static void ReportPathNotFound(string path, PSCmdlet command)
         {
-            var errorMessage = string.Format(CultureInfo.CurrentCulture, Resources.PathNotFound, path);
+            var errorMessage = string.Format(CultureInfo.CurrentCulture, PathUtilityStrings.PathNotFound, path);
             var exception = new ArgumentException(errorMessage);
             var errorRecord = new ErrorRecord(exception, "PathNotFound", ErrorCategory.ObjectNotFound, path);
             command.ThrowTerminatingError(errorRecord);
@@ -86,7 +86,7 @@ namespace Microsoft.PowerShell.TextUtility
         /// </summary>
         internal static void ReportMultipleFilesNotSupported(PSCmdlet command)
         {
-            var errorMessage = string.Format(CultureInfo.CurrentCulture, Resources.MultipleFilesNotSupported);
+            var errorMessage = string.Format(CultureInfo.CurrentCulture, PathUtilityStrings.MultipleFilesNotSupported);
             var exception = new ArgumentException(errorMessage);
             var errorRecord = new ErrorRecord(exception, "MultipleFilesNotSupported", ErrorCategory.InvalidArgument, null);
             command.ThrowTerminatingError(errorRecord);
