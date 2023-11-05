@@ -77,7 +77,7 @@ namespace Microsoft.PowerShell.TextUtility
         {
             var errorMessage = string.Format(CultureInfo.CurrentCulture, Resources.PathNotFound, path);
             var exception = new ArgumentException(errorMessage);
-            var errorRecord = new ErrorRecord(exception, "PathNotFound", ErrorCategory.InvalidArgument, path);
+            var errorRecord = new ErrorRecord(exception, "PathNotFound", ErrorCategory.ObjectNotFound, path);
             command.ThrowTerminatingError(errorRecord);
         }
 
