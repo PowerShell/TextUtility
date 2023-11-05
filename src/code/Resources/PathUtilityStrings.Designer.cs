@@ -45,7 +45,7 @@ namespace Microsoft.PowerShell.TextUtility.Resources
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.PowerShell.TextUtility.resources.PathUtilityStrings", typeof(PathUtilityStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.PowerShell.TextUtility.Resources.PathUtilityStrings", typeof(PathUtilityStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
