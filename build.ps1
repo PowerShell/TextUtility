@@ -129,7 +129,7 @@ try {
     }
 
     if (-not $NoBuild) {
-        dotnet publish --verbosity diag --output $outPath --configuration $Configuration
+        dotnet publish --verbosity d --output $outPath --configuration $Configuration
         Remove-Item -Path "$outPath/Microsoft.PowerShell.TextUtility.deps.json" -ErrorAction SilentlyContinue
         if ($Configuration -eq "Release") {
             Remove-Item -Path "$outPath/Microsoft.PowerShell.TextUtility.pdb" -ErrorAction SilentlyContinue
