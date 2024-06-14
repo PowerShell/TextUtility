@@ -70,7 +70,9 @@ extends:
             inputs:
               packageType: sdk
               useGlobalJson: true
-          - pwsh: ./build.ps1 -Configuration $(BuildConfiguration)
+          - pwsh: |
+              Get-ChildItem | Write-Verbose -Verbose
+              ./build.ps1 -Configuration Release
             displayName: Build
           - task: onebranch.pipeline.signing@1
             displayName: Sign 1st-party files
