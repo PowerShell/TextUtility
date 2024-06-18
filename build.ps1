@@ -83,13 +83,7 @@ function Export-Module
     if ($pre) { $nupkgName += "-${pre}" }
     $nupkgName += ".nupkg"
     $nupkgPath = Join-Path $repoRoot out $nupkgName
-    if ($env:TF_BUILD) {
-        # In Azure DevOps
-        Write-Host "##vso[artifact.upload containerfolder=$nupkgName;artifactname=$nupkgName;]$nupkgPath"
-    }
-    else {
-        Write-Verbose -Verbose "package path: ${nupkgPath} (exists:$(Test-Path $nupkgPath))"
-    }
+    Write-Verbose -Verbose "package path: ${nupkgPath} (exists:$(Test-Path $nupkgPath))"
 }
 
 function Test-Module {
