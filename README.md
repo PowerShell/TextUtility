@@ -23,3 +23,11 @@ This will convert tabular data and convert it to an object.
 ## Get-FileEncoding
 
 This cmdlet returns encoding for a file.
+
+## Code of Conduct
+
+Please see our [Code of Conduct](.github/CODE_OF_CONDUCT.md) before participating in this project.
+
+## Security Policy
+
+For any security issues, please see our [Security Policy](.github/SECURITY.md).

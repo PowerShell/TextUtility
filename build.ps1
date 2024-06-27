@@ -64,7 +64,7 @@ function Export-Module
     # now construct a nupkg by registering a local repository and calling publish module
     $repoName = [guid]::newGuid().ToString("N")
     try {
-        Register-PSRepository -Name $repoName -SourceLocation ${repoRoot} -InstallationPolicy Trusted
+        Register-PSRepository -Name $repoName -SourceLocation "${repoRoot}/out" -InstallationPolicy Trusted
         Publish-Module -Path $packageRoot -Repository $repoName
     }
     catch {
@@ -82,14 +82,8 @@ function Export-Module
     $pre = $moduleInfo.PrivateData.PSData.Prerelease
     if ($pre) { $nupkgName += "-${pre}" }
     $nupkgName += ".nupkg"
-    $nupkgPath = Join-Path $repoRoot $nupkgName
-    if ($env:TF_BUILD) {
-        # In Azure DevOps
-        Write-Host "##vso[artifact.upload containerfolder=$nupkgName;artifactname=$nupkgName;]$nupkgPath"
-    }
-    else {
-        Write-Verbose -Verbose "package path: ${nupkgPath} (exists:$(Test-Path $nupkgPath))"
-    }
+    $nupkgPath = Join-Path $repoRoot out $nupkgName
+    Write-Verbose -Verbose "package path: ${nupkgPath} (exists:$(Test-Path $nupkgPath))"
 }
 
 function Test-Module {
@@ -129,7 +123,11 @@ try {
     }
 
     if (-not $NoBuild) {
-        dotnet publish --output $outPath --configuration $Configuration
+        dotnet publish --verbosity d --output $outPath --configuration $Configuration
+        Remove-Item -Path "$outPath/Microsoft.PowerShell.TextUtility.deps.json" -ErrorAction SilentlyContinue
+        if ($Configuration -eq "Release") {
+            Remove-Item -Path "$outPath/Microsoft.PowerShell.TextUtility.pdb" -ErrorAction SilentlyContinue
+        }
     }
 
     if ($Test) {
