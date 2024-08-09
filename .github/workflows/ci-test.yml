@@ -49,5 +49,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSScriptAnalyzer-tests-${{ matrix.os }}
+          name: TextUtility-tests-${{ matrix.os }}
           path: testResults.xml
