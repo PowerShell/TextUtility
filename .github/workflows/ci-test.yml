@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    name: pester
+    name: Build and Test
     strategy:
       matrix:
         os: [ windows-latest, macos-latest, ubuntu-latest ]
