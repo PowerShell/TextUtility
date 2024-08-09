@@ -30,7 +30,11 @@ param (
 
     [Parameter()]
     [switch]
-    $GetPackageVersion
+    $GetPackageVersion,
+
+    [Parameter(ParameterSetName="bootstrap")]
+    [switch]
+    $Bootstrap
 
 )
 
@@ -89,27 +93,53 @@ function Export-Module
 function Test-Module {
     try {
         $PSVersionTable | Out-String -Stream | Write-Verbose -Verbose
-        $pesterInstallations = Get-Module -ListAvailable -Name Pester
-        if ($pesterInstallations.Version -notcontains "4.10.1") {
-            Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -Scope CurrentUser
-            }
         $importTarget = "Import-Module ${PSScriptRoot}/out/${ModuleName}"
         $importPester = "Import-Module Pester -Max 4.10.1"
-        $invokePester = "Invoke-Pester -OutputFormat NUnitXml -EnableExit -OutputFile ../Microsoft.PowerShell.TextUtility.xml"
-        $command = "${importTarget}; ${importPester}; ${invokePester}"
+        $invokePester = "Invoke-Pester -OutputFormat NUnitXml -EnableExit -OutputFile ../testResults.xml"
+        $sb = [scriptblock]::Create("${importTarget}; ${importPester}; ${invokePester}")
         Push-Location $testRoot
-        pwsh -noprofile -command $command
+        # calculate the shell to run rather than hardcoding it.
+        $PSEXE = (Get-Process -id $PID).MainModule.FileName
+        & $PSEXE -noprofile -command $sb
     }
     finally {
         Pop-Location
     }
 }
 
+function Invoke-Bootstrap
+{
+    $neededPesterModule = Get-Module -Name Pester -ListAvailable | Where-Object { $_.Version -eq "4.10.1" }
+    $neededPesterVersion = [version]"4.10.1"
+    if ($neededPesterModule.Version -eq $neededPesterVersion)
+    {
+        Write-Verbose -Verbose -Message "Required pester version $neededPesterVersion is available."
+        return
+    }
+
+    Write-Verbose -Verbose -Message "Attempting install of Pester version ${neededPesterVersion}."
+    Install-Module -Name Pester -Scope CurrentUser -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
+    $neededPesterModule = Get-Module -Name Pester -ListAvailable | Where-Object { $_.Version -eq $neededPesterVersion }
+    if ($neededPesterModule.Version -ne $neededPesterVersion)
+    {
+        throw "Pester install failed"
+    }
+
+    Write-Verbose -Verbose -Message "Pester version $neededPesterVersion installed."
+    return
+}
+
+
 try {
     Push-Location "$PSScriptRoot/src/code"
     $script:moduleInfo = Get-ModuleInfo
     if ($GetPackageVersion) {
         return $moduleInfo.ModuleVersion
+    }
+
+    if ($Bootstrap) {
+        Invoke-Bootstrap
+        return
     }
 
     $outPath = "$PSScriptRoot/out/${moduleName}"
@@ -132,19 +162,6 @@ try {
 
     if ($Test) {
         Test-Module
-
-        <#
-        $script = [ScriptBlock]::Create("try {
-                Import-Module '${repoRoot}/out/${moduleName}/'
-                Import-Module -Name Pester -Max 4.99
-                Push-Location '${repoRoot}/test'
-                Invoke-Pester
-            }
-            finally {
-                Pop-Location
-            }")
-        pwsh -c $script
-        #>
         return
     }
 

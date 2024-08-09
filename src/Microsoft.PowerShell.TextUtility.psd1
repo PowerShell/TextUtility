@@ -10,7 +10,7 @@
     CompanyName = 'Microsoft Corporation'
     Copyright = '(c) Microsoft Corporation. All rights reserved.'
     Description = "This module contains cmdlets to help with manipulating or reading text."
-    PowerShellVersion = '5.1'
+    PowerShellVersion = '7.0'
     FormatsToProcess = @('Microsoft.PowerShell.TextUtility.format.ps1xml')
     CmdletsToExport = @(
         'Compare-Text','ConvertFrom-Base64','ConvertTo-Base64',"ConvertFrom-TextTable"
