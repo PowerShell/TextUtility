@@ -2,6 +2,20 @@ name: TextUtility-ModuleBuild-$(Build.BuildId)
 trigger: none
 pr: none
 
+schedules:
+- cron: '0 3 * * 1'
+  displayName: Weekly Build
+  branches:
+    include:
+    - master
+  always: true
+
+parameters:
+  - name: 'publishToPowerShellGallery'
+    displayName: 'Publish module to PowerShell gallery'
+    type: boolean
+    default: false
+
 variables:
   BuildConfiguration: Release
   DOTNET_NOLOGO: true
@@ -106,6 +120,7 @@ extends:
               files_to_sign: "**/*.nupkg"
     - stage: release
       dependsOn: build
+      condition: ${{ parameters.publishToPowerShellGallery }}
       variables:
         version: $[ stageDependencies.build.main.outputs['package.version'] ]
         drop: $(Pipeline.Workspace)/drop_build_main
