@@ -98,7 +98,7 @@ function Test-Module {
         $invokePester = "Invoke-Pester -OutputFormat NUnitXml -EnableExit -OutputFile ../testResults.xml"
         $sb = [scriptblock]::Create("${importTarget}; ${importPester}; ${invokePester}")
         Push-Location $testRoot
-        # we support Windows PowerShell too so we need to calculate the shell to run rather than hardcoding it.
+        # calculate the shell to run rather than hardcoding it.
         $PSEXE = (Get-Process -id $PID).MainModule.FileName
         & $PSEXE -noprofile -command $sb
     }
