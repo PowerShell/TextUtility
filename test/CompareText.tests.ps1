@@ -3,14 +3,6 @@
 
 Describe 'Compare-Text tests' {
     BeforeAll {
-        # PSStyle variable does not exist on Windows PowerShell
-        # we can mock it up this way.
-        if (-not (Test-Path variable:PSStyle)) {
-            $PSStyle = @{
-                OutputRendering = "host"
-            }
-        }
-
         $currentOutputRendering = $PSStyle.OutputRendering
         $PSStyle.OutputRendering = 'Ansi'
         $leftText = @("This is some", "example text.") -join [Environment]::NewLine
