@@ -118,7 +118,7 @@ function Invoke-Bootstrap
     }
 
     Write-Verbose -Verbose -Message "Attempting install of Pester version ${neededPesterVersion}."
-    Install-Module -Name Pester -Scope CurrentUser -RequiredVersion 4.10.1 -Force
+    Install-Module -Name Pester -Scope CurrentUser -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
     $neededPesterModule = Get-Module -Name Pester -ListAvailable | Where-Object { $_.Version -eq $neededPesterVersion }
     if ($neededPesterModule.Version -ne $neededPesterVersion)
     {
