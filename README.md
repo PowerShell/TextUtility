@@ -20,6 +20,10 @@ Return a base64 encoded representation of a string.
 
 This will convert tabular data and convert it to an object.
 
+## Get-FileEncoding
+
+This cmdlet returns encoding for a file.
+
 ## Code of Conduct
 
 Please see our [Code of Conduct](.github/CODE_OF_CONDUCT.md) before participating in this project.
