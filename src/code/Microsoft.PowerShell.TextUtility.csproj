@@ -17,7 +17,7 @@
         <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-*">
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="System.Text.Json" Version="6.0.6" >
+        <PackageReference Include="System.Text.Json" Version="6.0.6">
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
     </ItemGroup>
@@ -26,6 +26,21 @@
         <Content Include="../*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\PathUtilityStrings.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PathUtilityStrings.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\PathUtilityStrings.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PathUtilityStrings.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

@@ -13,7 +13,7 @@
     PowerShellVersion = '7.0'
     FormatsToProcess = @('Microsoft.PowerShell.TextUtility.format.ps1xml')
     CmdletsToExport = @(
-        'Compare-Text','ConvertFrom-Base64','ConvertTo-Base64',"ConvertFrom-TextTable"
+        'Compare-Text','ConvertFrom-Base64','ConvertTo-Base64',"ConvertFrom-TextTable","Get-FileEncoding"
     )
     PrivateData = @{
         PSData = @{
