@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="PowerShellStandard.Library" Version="5.1.0" />
-    <PackageVersion Include="System.Text.Json" Version="6.0.6" />
+    <PackageVersion Include="PowerShellStandard.Library" Version="5.1.1" />
+    <PackageVersion Include="System.Text.Json" Version="6.0.11" />
   </ItemGroup>
 </Project>
