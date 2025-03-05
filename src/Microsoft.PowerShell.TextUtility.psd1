@@ -3,7 +3,7 @@
 
 @{
     RootModule = '.\Microsoft.PowerShell.TextUtility.dll'
-    ModuleVersion = '0.5.0'
+    ModuleVersion = '{{ModuleVersion}}'
     CompatiblePSEditions = @('Desktop', 'Core')
     GUID = '5cb64356-cd04-4a18-90a4-fa4072126155'
     Author = 'Microsoft Corporation'
