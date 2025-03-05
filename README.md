@@ -2,6 +2,9 @@
 
 This module is a collection of cmdlets for working with text content.
 
+> Please note that this module has been archived and is no longer actively maintained.
+> Feel free to fork it if you'd like!
+
 ## Compare-Text
 
 This cmdlet compares two text strings using [diff-match-patch](https://github.com/google/diff-match-patch).
